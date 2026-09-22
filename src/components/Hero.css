@@ -1,0 +1,134 @@
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--color-graphite);
+}
+
+.hero-backgrounds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-image-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-image-layer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
+    z-index: 1;
+}
+
+.hero-content-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.block {
+    display: block;
+}
+
+.hero-subtext {
+    font-size: 1.25rem;
+    color: var(--color-neutral-300);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-lg);
+    max-width: 600px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+/* Specific styling for the secondary button in the dark hero context */
+.hero-btn-secondary {
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.hero-btn-secondary:hover {
+    background-color: var(--color-white);
+    color: var(--color-graphite);
+}
+
+.hero-service-indicator {
+    position: absolute;
+    bottom: var(--space-md);
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.indicator-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 400px;
+}
+
+.indicator-text {
+    color: var(--color-white);
+}
+
+.indicator-track {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+}
+
+.indicator-segment {
+    flex: 1;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.indicator-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--color-philux-red);
+}
+
+.indicator-fill.full {
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

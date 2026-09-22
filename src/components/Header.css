@@ -1,0 +1,156 @@
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    transition: all var(--transition-normal);
+    background-color: transparent;
+    color: var(--color-white);
+    /* Default to white assuming dark hero */
+}
+
+.site-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    padding: 1rem 0;
+    color: var(--color-graphite);
+    box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    transition: color var(--transition-fast);
+}
+
+/* Subtle shield geometry for logo placeholder */
+.logo-shield {
+    width: 24px;
+    height: 28px;
+    background-color: var(--color-philux-red);
+    clip-path: polygon(50% 0%, 100% 20%, 100% 70%, 50% 100%, 0% 70%, 0% 20%);
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0;
+}
+
+/* Animated red underline for Nav Hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--color-philux-red);
+    transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-item-dropdown {
+    position: relative;
+}
+
+.dropdown-icon {
+    transition: transform var(--transition-fast);
+}
+
+.nav-item-dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-md);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+    min-width: 480px;
+    pointer-events: none;
+}
+
+.mega-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+.site-header a {
+    color: inherit;
+}
+
+.site-header.scrolled .mega-menu a {
+    color: var(--color-graphite);
+}
+
+.mega-menu a {
+    color: var(--color-graphite);
+}
+
+.mega-menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.mega-menu-grid a {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: var(--border-radius-sm);
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.mega-menu-grid a:hover {
+    background-color: var(--color-neutral-100);
+    color: var(--color-philux-red);
+}
+
+@media (max-width: 991px) {
+    .desktop-only {
+        display: none;
+    }
+}

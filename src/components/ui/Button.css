@@ -1,0 +1,12 @@
+.btn .btn-icon {
+    margin-left: 0.5rem;
+    transition: transform var(--transition-normal);
+}
+
+.btn-primary:hover .btn-icon {
+    transform: translateX(4px);
+}
+
+.btn-secondary:hover .btn-icon {
+    transform: translate(4px, -4px);
+}

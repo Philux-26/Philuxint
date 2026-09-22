@@ -1,0 +1,35 @@
+.intro-section {
+    padding: var(--space-2xl) 0;
+    background-color: var(--color-off-white);
+    position: relative;
+}
+
+.intro-container {
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    gap: var(--space-xl);
+}
+
+.intro-label-col {
+    padding-top: 0.5rem;
+    /* Optical alignment with heading */
+}
+
+.intro-statement {
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--color-graphite);
+    margin-bottom: var(--space-lg);
+    max-width: 900px;
+}
+
+@media (max-width: 991px) {
+    .intro-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .intro-section {
+        padding: var(--space-xl) 0;
+    }
+}
