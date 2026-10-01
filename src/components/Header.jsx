@@ -88,10 +88,10 @@ export const Header = () => {
                             <ul className="mobile-nav-list">
                                 <li><NavLink to="/" end onClick={closeMobileMenu}>Home</NavLink></li>
                                 <li><NavLink to="/about" onClick={closeMobileMenu}>About</NavLink></li>
-                                <li><NavLink to="/services" onClick={closeMobileMenu}>Our Services</NavLink></li>
-                                <li><NavLink to="/shop" onClick={closeMobileMenu}>E-Commerce Shop</NavLink></li>
-                                <li><NavLink to="/blog" onClick={closeMobileMenu}>Intelligence Blog</NavLink></li>
-                                <li><NavLink to="/contact" onClick={closeMobileMenu}>Global Contact</NavLink></li>
+                                <li><NavLink to="/services" onClick={closeMobileMenu}>Services</NavLink></li>
+                                <li><NavLink to="/shop" onClick={closeMobileMenu}>Shop</NavLink></li>
+                                <li><NavLink to="/blog" onClick={closeMobileMenu}>Blog</NavLink></li>
+                                <li><NavLink to="/contact" onClick={closeMobileMenu}>Contact</NavLink></li>
                                 <li className="mobile-nav-cta">
                                     <Link to="/contact" onClick={closeMobileMenu} style={{ textDecoration: 'none', display: 'block', width: '100%' }}>
                                         <Button variant="primary" style={{ width: '100%', justifyContent: 'center' }}>Request a Quote</Button>
