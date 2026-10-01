@@ -1,15 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useWPData } from '../hooks/useWPData';
 import './Statistics.css';
 
-const STATS = [
-    { value: 'XX+', label: 'INSTALLATIONS' },
-    { value: 'XX+', label: 'CLIENTS' },
-    { value: 'XX', label: 'LOCATIONS' },
-    { value: 'XX+', label: 'YEARS' },
-];
-
 export const Statistics = () => {
+    const { data } = useWPData('statistics');
+
+    const STATS = [
+        { value: `${data.statistics.installations}+`, label: 'INSTALLATIONS' },
+        { value: `${data.statistics.clients}+`, label: 'CLIENTS' },
+        { value: `${data.statistics.locations}`, label: 'LOCATIONS' },
+        { value: `${data.statistics.yearsExperience}+`, label: 'YEARS' },
+    ];
+
     return (
         <section className="stats-section bg-graphite text-white">
             <div className="stats-bg-geometry"></div>

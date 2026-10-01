@@ -1,5 +1,7 @@
 import React from 'react';
 import { clsx } from 'clsx';
+import { motion } from 'framer-motion';
+import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import { Button } from './ui/Button';
 import './Footer.css';
 
@@ -17,15 +19,26 @@ export const Footer = () => {
                         <p className="footer-positioning">
                             Integrated technology, security, energy, and intelligent infrastructure solutions for a safer environment.
                         </p>
+                        <div className="footer-socials" style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
+                            <motion.a whileHover={{ y: -5, scale: 1.1, color: "var(--color-philux-red)" }} transition={{ duration: 0.2 }} href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link" style={{ color: 'var(--color-neutral-300)' }}>
+                                <Facebook size={22} strokeWidth={1.5} />
+                            </motion.a>
+                            <motion.a whileHover={{ y: -5, scale: 1.1, color: "var(--color-philux-red)" }} transition={{ duration: 0.2 }} href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-link" style={{ color: 'var(--color-neutral-300)' }}>
+                                <Instagram size={22} strokeWidth={1.5} />
+                            </motion.a>
+                            <motion.a whileHover={{ y: -5, scale: 1.1, color: "var(--color-philux-red)" }} transition={{ duration: 0.2 }} href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link" style={{ color: 'var(--color-neutral-300)' }}>
+                                <Linkedin size={22} strokeWidth={1.5} />
+                            </motion.a>
+                        </div>
                     </div>
 
                     <div className="footer-links">
                         <div className="footer-column">
                             <h4 className="footer-col-title label">Company</h4>
                             <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Shop</a></li>
-                                <li><a href="#">Blog</a></li>
+                                <li><a href="/about">About Us</a></li>
+                                <li><a href="/shop">Shop</a></li>
+                                <li><a href="/blog">Blog</a></li>
                                 <li><a href="#">Contact</a></li>
                             </ul>
                         </div>

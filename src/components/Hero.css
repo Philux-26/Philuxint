@@ -71,14 +71,14 @@
 }
 
 /* Specific styling for the secondary button in the dark hero context */
-.hero-btn-secondary {
-    color: var(--color-white);
-    border-color: rgba(255, 255, 255, 0.4);
+.hero-section .hero-btn-secondary {
+    color: var(--color-white) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-.hero-btn-secondary:hover {
-    background-color: var(--color-white);
-    color: var(--color-graphite);
+.hero-section .hero-btn-secondary:hover {
+    background-color: var(--color-white) !important;
+    color: var(--color-graphite) !important;
 }
 
 .hero-service-indicator {

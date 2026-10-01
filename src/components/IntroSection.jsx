@@ -36,7 +36,7 @@ export const IntroSection = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.3 }}
                     >
-                        <Button variant="secondary" icon="right" href="#discover" style={{ border: 'none', paddingLeft: 0, color: 'var(--color-philux-red)' }}>
+                        <Button variant="secondary" icon="right" href="#discover" className="intro-discover-btn">
                             DISCOVER PHILUX
                         </Button>
                     </motion.div>

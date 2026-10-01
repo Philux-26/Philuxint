@@ -1,0 +1,313 @@
+.deployments-carousel-section {
+    padding: var(--space-xl) 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+/* =========================================
+   Besopke Instagram CTA Styling 
+   ========================================= */
+.creative-ig-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1.25rem 0.5rem 0.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    transition: all var(--transition-normal);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.creative-ig-cta:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(225, 48, 108, 0.15);
+    /* Instagram brand color shadow */
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.ig-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+}
+
+.ig-cta-text {
+    font-size: 0.95rem;
+}
+
+/* =========================================
+   Carousel Track & Cards
+   ========================================= */
+.carousel-track-container {
+    width: 100%;
+    margin-top: 4.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+.carousel-track-container:active {
+    cursor: grabbing;
+}
+
+.carousel-track-container::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0 var(--space-md);
+    padding-left: max(var(--space-md), calc((100vw - 1200px) / 2));
+    width: max-content;
+}
+
+.deployment-card {
+    position: relative;
+    width: 300px;
+    height: 533px;
+    /* 9:16 Reel/TikTok Aspect Ratio */
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    background-color: var(--color-graphite-light, #1a1a1a);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    cursor: pointer;
+}
+
+.deployment-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.deployment-poster {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: filter var(--transition-normal), opacity var(--transition-normal);
+    z-index: 1;
+}
+
+.deployment-card:hover .deployment-poster {
+    opacity: 0.2;
+    filter: blur(4px);
+}
+
+.deployment-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 2;
+    transition: opacity var(--transition-normal);
+    background-color: #000;
+}
+
+.deployment-video.playing {
+    opacity: 1;
+}
+
+.deployment-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, transparent 40%, rgba(0, 0, 0, 0.85) 100%);
+    pointer-events: none;
+}
+
+.deployment-status {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    padding: 0.5rem 0.75rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.deployment-card:hover .deployment-status {
+    background: rgba(200, 16, 46, 0.85);
+    /* Philux Red Match */
+    border-color: rgba(200, 16, 46, 1);
+}
+
+.recording-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+.deployment-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    color: var(--color-white);
+    letter-spacing: -0.01em;
+}
+
+.deployment-location {
+    font-size: 0.875rem;
+    color: var(--color-neutral-300);
+    font-weight: 500;
+}
+
+/* =========================================
+   Cinematic Theatre Modal
+   ========================================= */
+.video-cinematic-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(30px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 10000;
+    transition: transform var(--transition-fast);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    padding: 0.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.modal-close-btn:hover {
+    transform: scale(1.1) rotate(90deg);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.video-cinematic-content {
+    width: 100%;
+    max-width: 1100px;
+    /* limits width for desktop */
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Intelligent viewport management adjusting aspect ratio whether the video is landscape wide or vertical reel format */
+@media (max-aspect-ratio: 1/1) {
+    .video-cinematic-content {
+        max-width: 450px;
+        aspect-ratio: 9/16;
+        height: 85vh;
+    }
+}
+
+.full-cinematic-player {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    flex-grow: 1;
+}
+
+/* Controls the overlay info dynamically overlaying the video player acting as a cinematic header */
+.video-modal-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 3rem 2rem 2rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3) 60%, transparent);
+    pointer-events: none;
+}
+
+.video-modal-info h2 {
+    color: white;
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+}
+
+.video-modal-info p {
+    color: var(--color-neutral-300);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .deployment-card {
+        width: 260px;
+        height: 462px;
+    }
+
+    .video-cinematic-modal {
+        padding: 1rem;
+    }
+
+    .modal-close-btn {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .video-modal-info h2 {
+        font-size: 1.5rem;
+    }
+}

@@ -32,4 +32,22 @@
     .intro-section {
         padding: var(--space-xl) 0;
     }
+
+    .intro-statement {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Discover Philux Button Override */
+.intro-discover-btn {
+    border: none !important;
+    padding-left: 0 !important;
+    background-color: transparent !important;
+    color: var(--color-philux-red) !important;
+}
+
+.intro-discover-btn:hover {
+    background-color: transparent !important;
+    color: var(--color-philux-red-hover) !important;
+    opacity: 0.8;
 }

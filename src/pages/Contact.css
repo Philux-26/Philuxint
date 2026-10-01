@@ -1,0 +1,167 @@
+/* Contact Hero Optimized */
+.contact-hero-optimized {
+    position: relative;
+    padding-top: 180px;
+    padding-bottom: 100px;
+    /* Reduced depth for clean separation */
+    overflow: hidden;
+}
+
+.contact-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image:
+        radial-gradient(circle at 100% 0%, rgba(200, 16, 46, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.02) 0%, transparent 40%);
+}
+
+.hero-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 200px;
+}
+
+/* 4-Grid Corporate Intel */
+.contact-intel-section {
+    padding-top: 0;
+    position: relative;
+}
+
+.intel-4-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+    /* Clean standard spacing instead of overlap */
+    position: relative;
+    z-index: 20;
+    margin-bottom: 100px;
+}
+
+.intel-glass-card {
+    background: var(--color-graphite);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.intel-glass-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(200, 16, 46, 0.4);
+}
+
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: var(--color-red);
+    /* Solid red for extreme visibility */
+    color: var(--color-white);
+    /* Pure white icons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 20px rgba(200, 16, 46, 0.2);
+}
+
+.intel-glass-card h4 {
+    font-family: 'Manrope', sans-serif;
+    color: var(--color-white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.intel-glass-card p {
+    color: var(--color-neutral-200);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.whatsapp-link {
+    transition: opacity 0.2s ease;
+    text-decoration: none;
+}
+
+.whatsapp-link:hover {
+    opacity: 0.8;
+}
+
+/* Standalone Quote Engine Space */
+.contact-form-section {
+    padding-top: 40px;
+}
+
+.form-engine-wrapper {
+    max-width: 1000px;
+    /* Expanded for maximum width */
+    margin: 0 auto;
+}
+
+.form-payload-container {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* QuoteForm Width Bottleneck Elimination */
+.form-payload-container .quote-form-section {
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.form-payload-container .quote-container {
+    grid-template-columns: 1fr;
+    /* Force 100% width grid */
+    gap: 0;
+}
+
+.form-payload-container .quote-info-sidebar {
+    display: none !important;
+    /* Hide sidebar entirely since Intel handles data */
+}
+
+.form-payload-container .form-card {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 60px !important;
+}
+
+.form-payload-container .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+
+/* Responsive Scaling */
+@media (max-width: 1200px) {
+    .intel-4-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-hero-optimized {
+        padding-top: 140px;
+        padding-bottom: 140px;
+    }
+
+    .hero-heading {
+        font-size: 3rem !important;
+    }
+
+    .intel-4-grid {
+        grid-template-columns: 1fr;
+        margin-top: -50px;
+    }
+
+    .form-payload-container .form-card {
+        padding: 30px !important;
+    }
+}

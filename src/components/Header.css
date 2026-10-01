@@ -79,8 +79,13 @@
     transition: width var(--transition-fast);
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     width: 100%;
+}
+
+.site-header a.nav-link.active {
+    color: var(--color-philux-red) !important;
 }
 
 .nav-item-dropdown {

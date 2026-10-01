@@ -25,14 +25,30 @@ export const QuoteForm = () => {
 
     const prevStep = () => setStep(prev => prev - 1);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API Submission
-        setTimeout(() => {
-            setIsSubmitting(false);
+
+        try {
+            const response = await fetch('/api/send-email.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
             setStep(4);
-        }, 1500);
+        } catch (error) {
+            console.error('Submission failed:', error);
+            // Fallback for visual prototyping in case backend isn't mounted yet
+            alert("API connection failed. Please ensure you are viewing this on your live cPanel server with PHP enabled.");
+            setStep(4);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (

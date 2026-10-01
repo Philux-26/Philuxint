@@ -1,0 +1,124 @@
+/* Hero Section */
+.about-hero {
+    position: relative;
+    padding: 160px 0 100px;
+    overflow: hidden;
+}
+
+.about-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top right, rgba(200, 16, 46, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.about-hero-container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-heading {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtext {
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+.max-w-2xl {
+    max-width: 42rem;
+}
+
+
+/* Mission Section */
+.mission-section {
+    padding: 100px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.mission-block {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Core Values Section */
+.values-section {
+    padding: 120px 0;
+    background: var(--color-white);
+}
+
+.values-header {
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.value-card {
+    background: var(--color-off-white);
+    padding: 40px 30px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+}
+
+.value-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    background: rgba(200, 16, 46, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-bottom: 24px;
+}
+
+.value-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--color-graphite);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .mission-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+}
