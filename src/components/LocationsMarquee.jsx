@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import './LocationsMarquee.css';
 
 const CITIES = [
-    "LAGOS", "ABUJA", "PORT HARCOURT", "ASABA", "KANO", "ENUGU",
-    "LAGOS", "ABUJA", "PORT HARCOURT", "ASABA", "KANO", "ENUGU" // Duplicated for seamless loop
+    "LAGOS", "ABUJA", "PORT HARCOURT", "ASABA", "KANO", "OWERRI", "BENIN",
+    "LAGOS", "ABUJA", "PORT HARCOURT", "ASABA", "KANO", "OWERRI", "BENIN" // Duplicated for seamless loop
 ];
 
 export const LocationsMarquee = () => {
