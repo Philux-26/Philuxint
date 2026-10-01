@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { clsx } from 'clsx';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { Button } from './ui/Button';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Header.css';
 
 export const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,13 +20,16 @@ export const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
     return (
-        <header className={clsx('site-header', isScrolled && 'scrolled')}>
+        <header className={clsx('site-header', (isScrolled || isMobileMenuOpen) && 'scrolled')}>
             <div className="container header-container">
-                <Link to="/" className="logo">
+                <Link to="/" className="logo" onClick={closeMobileMenu}>
                     <img src="/logo.png" alt="Philux Logo" style={{ height: '36px', objectFit: 'contain' }} />
                 </Link>
 
+                {/* ===== DESKTOP NAVIGATION ===== */}
                 <nav className="main-nav desktop-only">
                     <ul className="nav-list">
                         <li><NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Home</NavLink></li>
@@ -53,14 +58,50 @@ export const Header = () => {
                 </nav>
 
                 <div className="header-actions desktop-only">
-                    {/* Primary lead capture button routes natively to the contact suite */}
                     <Link to="/contact" style={{ textDecoration: 'none' }}>
                         <Button variant="primary" icon="right">
                             Request a Quote
                         </Button>
                     </Link>
                 </div>
+
+                {/* ===== MOBILE MENU TOGGLE ===== */}
+                <div
+                    className="mobile-menu-toggle mobile-only"
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                >
+                    {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                </div>
             </div>
+
+            {/* ===== MOBILE OVERLAY ===== */}
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div
+                        className="mobile-nav-overlay"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <div className="container">
+                            <ul className="mobile-nav-list">
+                                <li><NavLink to="/" end onClick={closeMobileMenu}>Home</NavLink></li>
+                                <li><NavLink to="/about" onClick={closeMobileMenu}>About</NavLink></li>
+                                <li><NavLink to="/services" onClick={closeMobileMenu}>Our Services</NavLink></li>
+                                <li><NavLink to="/shop" onClick={closeMobileMenu}>E-Commerce Shop</NavLink></li>
+                                <li><NavLink to="/blog" onClick={closeMobileMenu}>Intelligence Blog</NavLink></li>
+                                <li><NavLink to="/contact" onClick={closeMobileMenu}>Global Contact</NavLink></li>
+                                <li className="mobile-nav-cta">
+                                    <Link to="/contact" onClick={closeMobileMenu} style={{ textDecoration: 'none', display: 'block', width: '100%' }}>
+                                        <Button variant="primary" style={{ width: '100%', justifyContent: 'center' }}>Request a Quote</Button>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </header>
     );
 };

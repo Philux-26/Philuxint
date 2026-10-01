@@ -8,7 +8,6 @@
     transition: all var(--transition-normal);
     background-color: transparent;
     color: var(--color-white);
-    /* Default to white assuming dark hero */
 }
 
 .site-header.scrolled {
@@ -36,14 +35,6 @@
     transition: color var(--transition-fast);
 }
 
-/* Subtle shield geometry for logo placeholder */
-.logo-shield {
-    width: 24px;
-    height: 28px;
-    background-color: var(--color-philux-red);
-    clip-path: polygon(50% 0%, 100% 20%, 100% 70%, 50% 100%, 0% 70%, 0% 20%);
-}
-
 .main-nav {
     display: flex;
     align-items: center;
@@ -67,7 +58,6 @@
     padding: 0.5rem 0;
 }
 
-/* Animated red underline for Nav Hover */
 .nav-link::after {
     content: '';
     position: absolute;
@@ -154,8 +144,52 @@
     color: var(--color-philux-red);
 }
 
+/* =========================================
+   Mobile View Overrides
+   ========================================= */
+.mobile-only {
+    display: none;
+}
+
+.mobile-nav-overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-white);
+    padding: 2rem 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    color: var(--color-graphite);
+    overflow: hidden;
+}
+
+.mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.mobile-nav-list a {
+    font-size: 1.25rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-graphite) !important;
+}
+
+.mobile-nav-cta {
+    margin-top: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-neutral-300);
+}
+
 @media (max-width: 991px) {
     .desktop-only {
-        display: none;
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: block;
+        cursor: pointer;
     }
 }

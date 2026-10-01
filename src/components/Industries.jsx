@@ -25,9 +25,26 @@ export const Industries = () => {
                                 key={i}
                                 className={`ind-tab ${hovered === i ? 'active' : ''}`}
                                 onMouseEnter={() => setHovered(i)}
+                                onClick={() => setHovered(i)}
                             >
-                                <span className="ind-tab-num">0{i + 1}</span>
-                                <h3 className="ind-tab-name">{ind.name}</h3>
+                                <div className="ind-tab-header">
+                                    <span className="ind-tab-num">0{i + 1}</span>
+                                    <h3 className="ind-tab-name">{ind.name}</h3>
+                                </div>
+
+                                <AnimatePresence>
+                                    {hovered === i && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.4 }}
+                                            className="ind-mobile-img-wrapper"
+                                        >
+                                            <img src={ind.img} alt={ind.name} className="ind-mobile-img" />
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         ))}
                     </div>

@@ -82,6 +82,9 @@ export const ServicesInteractive = () => {
                                                 transition={{ duration: 0.4 }}
                                                 className="service-desc-wrapper"
                                             >
+                                                <div className="mobile-only-img-wrapper">
+                                                    <img src={srv.img} alt={srv.title} className="mobile-only-img" />
+                                                </div>
                                                 <p className="service-desc">{srv.desc}</p>
                                             </motion.div>
                                         )}

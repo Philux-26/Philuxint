@@ -108,15 +108,33 @@
     object-position: center;
 }
 
+.mobile-only-img-wrapper {
+    display: none;
+}
+
 @media (max-width: 991px) {
     .services-container {
         grid-template-columns: 1fr;
-        gap: var(--space-lg);
+        gap: var(--space-md);
     }
 
     .services-image-col {
-        height: 400px;
-        order: -1;
+        display: none !important;
+    }
+
+    .mobile-only-img-wrapper {
+        display: block;
+        width: 100%;
+        height: 240px;
+        margin-top: 1.5rem;
+        border-radius: var(--border-radius-sm);
+        overflow: hidden;
+    }
+
+    .mobile-only-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     .service-item-header {

@@ -201,17 +201,34 @@ img {
     font-weight: 700;
 }
 
-.bg-graphite .btn-secondary {
-    color: #ffffff;
-    border-color: #ffffff;
-}
-
-.btn-secondary:hover {
-    background-color: var(--color-graphite);
-    color: #ffffff;
-}
-
 .bg-graphite .btn-secondary:hover {
     background-color: #ffffff;
     color: var(--color-graphite);
+}
+
+/* ==========================================================================
+   GLOBAL MOBILE VIEWPORT COMPRESSION
+   ========================================================================== */
+@media (max-width: 768px) {
+    :root {
+        --space-md: 1.5rem;
+        /* reduced from 2rem */
+        --space-lg: 2.5rem;
+        /* reduced from 4rem */
+        --space-xl: 4rem;
+        /* heavily crushed from 8rem (128px to 64px) */
+        --space-2xl: 6rem;
+        /* heavily crushed from 12rem (192px to 96px) */
+
+        --container-padding: 1.25rem;
+        /* slightly tighter side margins for mobile */
+    }
+
+    .heading-display {
+        font-size: clamp(2rem, 8vw, 2.75rem);
+    }
+
+    .heading-section {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
 }

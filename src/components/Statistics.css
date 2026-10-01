@@ -57,6 +57,11 @@
 
 @media (max-width: 575px) {
     .stats-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-lg) var(--space-sm);
+    }
+
+    .stat-value {
+        font-size: clamp(2.5rem, 8vw, 3rem);
     }
 }
