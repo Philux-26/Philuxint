@@ -43,7 +43,7 @@ export const DeploymentsCarousel = () => {
                         viewport={{ once: true, delay: 0.2 }}
                         className="carousel-cta-wrapper"
                     >
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="creative-ig-cta">
+                        <a href="https://www.instagram.com/philuxint/" target="_blank" rel="noopener noreferrer" className="creative-ig-cta">
                             <div className="ig-icon-wrapper">
                                 <IgIcon size={20} />
                             </div>

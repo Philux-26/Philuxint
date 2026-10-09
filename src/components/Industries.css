@@ -15,6 +15,17 @@
     justify-content: space-between;
 }
 
+/* Close massive gaps exclusively on Desktop screens */
+@media (min-width: 992px) {
+    .ind-tabs-col {
+        justify-content: center;
+    }
+
+    .ind-tab {
+        padding: 1rem 0;
+    }
+}
+
 .ind-tab {
     padding: 1.5rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -74,6 +85,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.ind-mobile-anim-wrapper {
+    overflow: hidden;
 }
 
 .ind-mobile-img-wrapper {

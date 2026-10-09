@@ -39,9 +39,11 @@ export const Industries = () => {
                                             animate={{ height: 'auto', opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
                                             transition={{ duration: 0.4 }}
-                                            className="ind-mobile-img-wrapper"
+                                            className="ind-mobile-anim-wrapper"
                                         >
-                                            <img src={ind.img} alt={ind.name} className="ind-mobile-img" />
+                                            <div className="ind-mobile-img-wrapper">
+                                                <img src={ind.img} alt={ind.name} className="ind-mobile-img" />
+                                            </div>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>

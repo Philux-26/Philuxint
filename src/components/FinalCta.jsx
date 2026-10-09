@@ -19,11 +19,11 @@ export const FinalCta = () => {
                     </Button>
 
                     <div className="cta-secondary-actions">
-                        <a href="https://wa.me/something" className="cta-link-icon">
+                        <a href="https://wa.me/2349064646062" target="_blank" rel="noopener noreferrer" className="cta-link-icon">
                             <MessageCircle size={20} />
                             <span>WhatsApp Us</span>
                         </a>
-                        <a href="tel:+234" className="cta-link-icon">
+                        <a href="tel:+2349064646062" className="cta-link-icon">
                             <Phone size={20} />
                             <span>Call Sales</span>
                         </a>

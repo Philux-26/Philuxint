@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ShoppingCart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './ServicesInteractive.css';
 
 const SERVICES = [
@@ -86,6 +87,17 @@ export const ServicesInteractive = () => {
                                                     <img src={srv.img} alt={srv.title} className="mobile-only-img" />
                                                 </div>
                                                 <p className="service-desc">{srv.desc}</p>
+
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: 0.15, duration: 0.4 }}
+                                                    className="service-shop-cta"
+                                                >
+                                                    <Link to="/shop" className="label text-red shop-inline-link">
+                                                        Shop related equipment <ShoppingCart size={15} strokeWidth={2.5} />
+                                                    </Link>
+                                                </motion.div>
                                             </motion.div>
                                         )}
                                     </AnimatePresence>

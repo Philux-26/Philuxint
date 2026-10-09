@@ -20,10 +20,10 @@ export const Footer = () => {
                             Integrated technology, security, energy, and intelligent infrastructure solutions for a safer environment.
                         </p>
                         <div className="footer-socials" style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
-                            <motion.a whileHover={{ y: -5, scale: 1.1, color: "var(--color-philux-red)" }} transition={{ duration: 0.2 }} href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-link" style={{ color: 'var(--color-neutral-300)' }}>
+                            <motion.a whileHover={{ y: -5, scale: 1.1, color: "var(--color-philux-red)" }} transition={{ duration: 0.2 }} href="https://www.facebook.com/philuxint" target="_blank" rel="noopener noreferrer" className="social-link" style={{ color: 'var(--color-neutral-300)' }}>
                                 <Facebook size={22} strokeWidth={1.5} />
                             </motion.a>
-                            <motion.a whileHover={{ y: -5, scale: 1.1, color: "var(--color-philux-red)" }} transition={{ duration: 0.2 }} href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-link" style={{ color: 'var(--color-neutral-300)' }}>
+                            <motion.a whileHover={{ y: -5, scale: 1.1, color: "var(--color-philux-red)" }} transition={{ duration: 0.2 }} href="https://www.instagram.com/philuxint/" target="_blank" rel="noopener noreferrer" className="social-link" style={{ color: 'var(--color-neutral-300)' }}>
                                 <Instagram size={22} strokeWidth={1.5} />
                             </motion.a>
                             <motion.a whileHover={{ y: -5, scale: 1.1, color: "var(--color-philux-red)" }} transition={{ duration: 0.2 }} href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-link" style={{ color: 'var(--color-neutral-300)' }}>

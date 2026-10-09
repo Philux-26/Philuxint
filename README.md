@@ -1,52 +1,37 @@
-# Philux International - Frontend Prototype
+# Philux International - Headless Web Application
 
-This is the premium, cinematic frontend prototype built for Philux International. It serves as a high-fidelity visual and interactive reference designed to be subsequently migrated to WordPress.
+This repository houses the premium frontend application for Philux International. Engineered as a highly interactive, bespoke React application, it utilizes Framer Motion for cinematic structural animations and a strictly enforced Vanilla CSS design system (Graphite, Philux Red, Off-White).
 
-## Overview
-The platform represents Philux as a leader in premium, integrated technology, security, energy, and intelligent infrastructure solutions.
+## System Architecture (Headless CMS)
+**Current Stage:** Converting from React/Vite to Next.js SSG.  
+**Deployment Target:** Next.js Static Export natively deployed on cPanel Git Version Control.
 
-### Key Engineered Features
-- **Cinematic Homepage Hero:** A layered motion collage pipeline operating with precise CSS masks and Framer Motion.
-- **Bespoke Design System:** Defined heavily through clean Vanilla CSS components, ensuring a structured, architectural aesthetic utilizing Philux Red, Graphite, and Neutrals.
-- **Interactive Solutions Showcase:** Dynamic left-to-right state reveals mimicking high-end digital experiences.
-- **Multi-step Quote Form:** Premium interaction states and structural, step-by-step form progression.
-- **Performant Motion System:** Smooth, friction-based scrolling activated globally by Lenis, alongside hardware-accelerated orchestrations strictly handled by Framer Motion.
+### Developer Handoff Instructions
+1. **The Backend (Data Source):** All active content data (E-commerce Shop products, Blog posts, page text) is strictly managed via an external Headless WordPress backend. The client logs into a standard WP dashboard (e.g., `api.philux.com`). We utilize **Advanced Custom Fields (ACF)** and **WPGraphQL** endpoints to serve structured data.
+2. **The Frontend (This Repository):** This UI interacts with the WordPress API asynchronously. It will be built into deeply optimized Static HTML/JS files via Next.js Static Site Generation (SSG). This allows zero database strain on the cPanel while ensuring standard SEO parsing.
+3. **Automated Deployment:** CI/CD is integrated directly from this GitHub repository (`Philux-26/Philuxint`). Any successful merge to the `main` branch will seamlessly trigger the cPanel Git Webhook to pull, build, and deploy the new static files. Clients only touch the WordPress panel.
 
-## Technology Stack
-- [Vite.js](https://vitejs.dev/) - Lightning-fast frontend build tool & server
-- [React](https://reactjs.org/) - Component architecture 
-- [Framer Motion](https://www.framer.com/motion/) - Declarative structural animations
-- [Lenis](https://lenis.studiofreight.com/) - Smooth scrolling engine
-- [Lucide React](https://lucide.dev/) - Geometric, high-fidelity SVG Iconography
+### Local Development Setup
+Ensure you have the latest stable Node.js installed.
+```bash
+# 1. Install all dependencies
+npm install
 
-## Getting Started
+# 2. Spin up the local development server
+npm run dev
 
-### Prerequisites
-Make sure you have modern [Node.js](https://nodejs.org/) installed on your operating system.
+# 3. Create a production build simulation
+npm run build
+```
 
-### Installation & Run Instructions
+### Core Libraries
+- `framer-motion`: Orchestrates scroll-linked reveals, dynamic image masking, and interactive layout state transitions.
+- `@studio-freight/lenis`: Handles inertia-based smooth scrolling globally to augment the high-end feel.
+- `react-helmet-async`: Configures meta tags and localized SEO dynamically per page.
+- `lucide-react`: Geometric SVG Iconography.
 
-1. Clone or navigate manually to the project root directory:
-   ```bash
-   cd "e:\BRAINBOX\APPs Projects\Philux"
-   ```
-2. Install all strict Node dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the local Vite development server:
-   ```bash
-   npm run dev
-   ```
-4. Build a statically checked production-ready bundle:
-   ```bash
-   npm run build
-   ```
-
-## Development Architecture
-- `/src/components/`: Directory containing all reusable, segmented UI structures (`Header`, `Hero`, `ServicesInteractive`, etc.).
-- `/src/index.css`: The master global stylesheet hosting all robust layout properties, typography scales (Manrope & Inter), and CSS design system variable tokens.
-- `/public/`: Houses the raw static assets including the customized brand insignia and localized, premium infrastructure imagery.
+### Design Integrity Note
+Do not arbitrarily add Tailwind or Bootstrap. The design relies entirely on the custom CSS variables strictly located in `/src/index.css` to maintain brand integrity. 
 
 ---
-*Developed for Philux International.*
+*Designed & Managed by BrainBox | Engineered for Philux International*

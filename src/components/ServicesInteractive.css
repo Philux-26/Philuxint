@@ -79,6 +79,23 @@
     max-width: 450px;
 }
 
+.service-shop-cta {
+    padding-left: 2.75rem;
+    padding-bottom: 1rem;
+}
+
+.shop-inline-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.shop-inline-link:hover {
+    opacity: 0.7;
+    transform: translateX(4px);
+}
+
 .services-image-col {
     position: relative;
     height: 650px;
@@ -142,6 +159,10 @@
     }
 
     .service-desc {
+        padding-left: 0;
+    }
+
+    .service-shop-cta {
         padding-left: 0;
     }
 
