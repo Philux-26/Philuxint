@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/Button';
-import './Hero.css';
 
 const SERVICES = [
     { id: '01', title: 'VEHICLE TRACKING', img: '/images/vehicle_tracking.png' },

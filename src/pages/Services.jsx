@@ -4,8 +4,8 @@ import { Shield, Zap, Car, Eye, Key, Flame, ShoppingCart } from 'lucide-react';
 import { HowWeWork } from '../components/HowWeWork';
 import { FinalCta } from '../components/FinalCta';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
-import './Services.css';
+import Link from "next/link";
+
 
 const SERVICES_DATA = [
     {
@@ -58,7 +58,7 @@ const SERVICES_DATA = [
     }
 ];
 
-export const Services = () => {
+export default function Services() {
     return (
         <React.Fragment>
             <Helmet>
@@ -119,7 +119,7 @@ export const Services = () => {
                                         ))}
                                     </ul>
                                     <div className="card-shop-action">
-                                        <Link to="/shop" className="shop-now-btn">
+                                        <Link href="/shop" className="shop-now-btn">
                                             Shop Equipment <ShoppingCart size={18} strokeWidth={2.5} />
                                         </Link>
                                     </div>

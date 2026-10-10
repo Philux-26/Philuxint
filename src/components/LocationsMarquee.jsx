@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './LocationsMarquee.css';
 
 const CITIES = [
     "LAGOS", "ABUJA", "PORT HARCOURT", "ASABA", "KANO", "OWERRI", "BENIN",

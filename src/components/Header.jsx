@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { clsx } from 'clsx';
 import { ChevronDown, Menu, X } from 'lucide-react';
-import { Link, NavLink } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Button } from './ui/Button';
 import { motion, AnimatePresence } from 'framer-motion';
-import './Header.css';
 
 export const Header = () => {
+    const router = useRouter();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,43 +22,50 @@ export const Header = () => {
 
     const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
+    const checkActive = (path) => {
+        if (path === '/') {
+            return router.pathname === '/' ? 'active' : '';
+        }
+        return router.pathname.startsWith(path) ? 'active' : '';
+    };
+
     return (
         <header className={clsx('site-header', (isScrolled || isMobileMenuOpen) && 'scrolled')}>
             <div className="container header-container">
-                <Link to="/" className="logo" onClick={closeMobileMenu}>
+                <Link href="/" className="logo" onClick={closeMobileMenu}>
                     <img src="/logo.png" alt="Philux Logo" style={{ height: '36px', objectFit: 'contain' }} />
                 </Link>
 
                 {/* ===== DESKTOP NAVIGATION ===== */}
                 <nav className="main-nav desktop-only">
                     <ul className="nav-list">
-                        <li><NavLink to="/" end className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Home</NavLink></li>
-                        <li><NavLink to="/about" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>About</NavLink></li>
+                        <li><Link href="/" className={`nav-link ${checkActive('/')}`}>Home</Link></li>
+                        <li><Link href="/about" className={`nav-link ${checkActive('/about')}`}>About</Link></li>
                         <li
                             className="nav-item-dropdown"
                             onMouseEnter={() => setIsServicesOpen(true)}
                             onMouseLeave={() => setIsServicesOpen(false)}
                         >
-                            <NavLink to="/services" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Services <ChevronDown size={14} className="dropdown-icon" /></NavLink>
+                            <Link href="/services" className={`nav-link ${checkActive('/services')}`}>Services <ChevronDown size={14} className="dropdown-icon" /></Link>
                             <div className={clsx("mega-menu", isServicesOpen && "open")}>
                                 <div className="mega-menu-grid">
-                                    <HashLink to="/services#vehicle-tracking">Vehicle Tracking</HashLink>
-                                    <HashLink to="/services#solar-inverter">Solar & Inverter</HashLink>
-                                    <HashLink to="/services#cctv">CCTV Surveillance</HashLink>
-                                    <HashLink to="/services#electric-fencing">Electric Fencing</HashLink>
-                                    <HashLink to="/services#access-control">Access Control</HashLink>
-                                    <HashLink to="/services#fire-alarm">Fire Alarm & Sprinkler</HashLink>
+                                    <Link href="/services#vehicle-tracking">Vehicle Tracking</Link>
+                                    <Link href="/services#solar-inverter">Solar & Inverter</Link>
+                                    <Link href="/services#cctv">CCTV Surveillance</Link>
+                                    <Link href="/services#electric-fencing">Electric Fencing</Link>
+                                    <Link href="/services#access-control">Access Control</Link>
+                                    <Link href="/services#fire-alarm">Fire Alarm & Sprinkler</Link>
                                 </div>
                             </div>
                         </li>
-                        <li><NavLink to="/shop" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Shop</NavLink></li>
-                        <li><NavLink to="/blog" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Blog</NavLink></li>
-                        <li><NavLink to="/contact" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Contact</NavLink></li>
+                        <li><Link href="/shop" className={`nav-link ${checkActive('/shop')}`}>Shop</Link></li>
+                        <li><Link href="/blog" className={`nav-link ${checkActive('/blog')}`}>Blog</Link></li>
+                        <li><Link href="/contact" className={`nav-link ${checkActive('/contact')}`}>Contact</Link></li>
                     </ul>
                 </nav>
 
                 <div className="header-actions desktop-only">
-                    <Link to="/contact" style={{ textDecoration: 'none' }}>
+                    <Link href="/contact" style={{ textDecoration: 'none' }}>
                         <Button variant="primary" icon="right">
                             Request a Quote
                         </Button>
@@ -86,14 +93,14 @@ export const Header = () => {
                     >
                         <div className="container">
                             <ul className="mobile-nav-list">
-                                <li><NavLink to="/" end onClick={closeMobileMenu}>Home</NavLink></li>
-                                <li><NavLink to="/about" onClick={closeMobileMenu}>About</NavLink></li>
-                                <li><NavLink to="/services" onClick={closeMobileMenu}>Services</NavLink></li>
-                                <li><NavLink to="/shop" onClick={closeMobileMenu}>Shop</NavLink></li>
-                                <li><NavLink to="/blog" onClick={closeMobileMenu}>Blog</NavLink></li>
-                                <li><NavLink to="/contact" onClick={closeMobileMenu}>Contact</NavLink></li>
+                                <li><Link href="/" className={checkActive('/')} onClick={closeMobileMenu}>Home</Link></li>
+                                <li><Link href="/about" className={checkActive('/about')} onClick={closeMobileMenu}>About</Link></li>
+                                <li><Link href="/services" className={checkActive('/services')} onClick={closeMobileMenu}>Services</Link></li>
+                                <li><Link href="/shop" className={checkActive('/shop')} onClick={closeMobileMenu}>Shop</Link></li>
+                                <li><Link href="/blog" className={checkActive('/blog')} onClick={closeMobileMenu}>Blog</Link></li>
+                                <li><Link href="/contact" className={checkActive('/contact')} onClick={closeMobileMenu}>Contact</Link></li>
                                 <li className="mobile-nav-cta">
-                                    <Link to="/contact" onClick={closeMobileMenu} style={{ textDecoration: 'none', display: 'block', width: '100%' }}>
+                                    <Link href="/contact" onClick={closeMobileMenu} style={{ textDecoration: 'none', display: 'block', width: '100%' }}>
                                         <Button variant="primary" style={{ width: '100%', justifyContent: 'center' }}>Request a Quote</Button>
                                     </Link>
                                 </li>

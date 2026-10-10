@@ -4,7 +4,6 @@ import { Shield, Zap, Target, Users, HardHat, Cpu } from 'lucide-react';
 import { Statistics } from '../components/Statistics';
 import { FinalCta } from '../components/FinalCta';
 import { Helmet } from 'react-helmet-async';
-import './About.css';
 
 const VALUES = [
     { icon: <Shield size={24} />, title: "Uncompromising Security", desc: "We deploy military-grade architecture in civilian environments, ensuring 100% asset protection." },
@@ -15,7 +14,7 @@ const VALUES = [
     { icon: <Users size={24} />, title: "Client Partnership", desc: "We don't just install; we continuously partner with organizations to scale their technological fortitude." },
 ];
 
-export const About = () => {
+export default function About() {
     return (
         <React.Fragment>
             <Helmet>

@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, ArrowRight, Loader } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import Link from "next/link";
+
 import { FinalCta } from '../components/FinalCta';
 import { Button } from '../components/ui/Button';
 import { getPosts, getCategories } from '../services/wp-api';
-import './Blog.css';
 
-export const Blog = () => {
+export default function Blog() {
     const [posts, setPosts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [activeCat, setActiveCat] = useState(null);
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [cursor, setCursor] = useState(null);
+    const [hasNextPage, setHasNextPage] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [isFetchingMore, setIsFetchingMore] = useState(false);
 
@@ -23,29 +23,42 @@ export const Blog = () => {
 
     useEffect(() => {
         const fetchFeed = async () => {
-            page === 1 ? setIsLoading(true) : setIsFetchingMore(true);
+            cursor === null ? setIsLoading(true) : setIsFetchingMore(true);
             try {
-                const res = await getPosts(page, activeCat, 6);
-                if (page === 1) {
+                const res = await getPosts(6, cursor, activeCat);
+                if (cursor === null) {
                     setPosts(res.posts);
                 } else {
                     setPosts(prev => [...prev, ...res.posts]);
                 }
-                setTotalPages(res.totalPages);
+                setHasNextPage(res.pageInfo.hasNextPage);
+                setCursor(res.pageInfo.endCursor); // Ready for next fetch
             } catch (err) {
-                console.error("WP API Failure loading posts", err);
+                console.error("GraphQL API Failure loading posts", err);
             } finally {
                 setIsLoading(false);
                 setIsFetchingMore(false);
             }
         };
         fetchFeed();
-    }, [page, activeCat]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [activeCat]); // activeCat triggers a fresh reset fetch, cursor load handled manually below
 
     const handleFilter = (catId) => {
         if (activeCat === catId) return;
         setActiveCat(catId);
-        setPage(1);
+        setCursor(null); // Reset pagination cursor
+    };
+
+    const handleLoadMore = () => {
+        if (!hasNextPage || !cursor) return;
+        setIsFetchingMore(true);
+        getPosts(6, cursor, activeCat).then(res => {
+            setPosts(prev => [...prev, ...res.posts]);
+            setHasNextPage(res.pageInfo.hasNextPage);
+            setCursor(res.pageInfo.endCursor);
+            setIsFetchingMore(false);
+        });
     };
 
     return (
@@ -128,10 +141,20 @@ export const Blog = () => {
                                                     <span>{post.date}</span>
                                                 </div>
                                                 <h3 className="blog-title" dangerouslySetInnerHTML={{ __html: post.title }}></h3>
+
+                                                {/* Render Tags if available from GraphQL */}
+                                                {post.tags && post.tags.length > 0 && (
+                                                    <div className="blog-tags" style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
+                                                        {post.tags.map(tag => (
+                                                            <span key={tag} className="tag-pill bg-neutral-200 text-graphite label" style={{ padding: '0.2rem 0.5rem', fontSize: '10px' }}>#{tag}</span>
+                                                        ))}
+                                                    </div>
+                                                )}
+
                                                 <p className="blog-excerpt" dangerouslySetInnerHTML={{ __html: post.excerpt }}></p>
 
                                                 <div className="blog-card-action">
-                                                    <Link to={`/blog/${post.id}`} className="blog-read-more" aria-label={`Read more about ${post.title}`}>
+                                                    <Link href={`/blog/${post.id}`} className="blog-read-more" aria-label={`Read more about ${post.title}`}>
                                                         Read Full Post <ArrowRight size={16} />
                                                     </Link>
                                                 </div>
@@ -142,11 +165,11 @@ export const Blog = () => {
                             </div>
 
                             {/* Pagination Logic */}
-                            {page < totalPages && (
+                            {hasNextPage && (
                                 <div className="blog-load-more-container">
                                     <Button
                                         variant="primary"
-                                        onClick={() => setPage(p => p + 1)}
+                                        onClick={handleLoadMore}
                                         disabled={isFetchingMore}
                                     >
                                         {isFetchingMore ? 'Loading...' : 'Load Older Posts'}
@@ -161,4 +184,4 @@ export const Blog = () => {
             <FinalCta />
         </React.Fragment>
     );
-};
+}

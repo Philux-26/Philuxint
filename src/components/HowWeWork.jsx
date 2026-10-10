@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './HowWeWork.css';
 
 const STEPS = [
     "CONSULTATION", "SITE ASSESSMENT", "SOLUTION DESIGN", "INSTALLATION", "TESTING", "SUPPORT"

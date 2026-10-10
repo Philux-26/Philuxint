@@ -1,9 +1,9 @@
+import Link from "next/link";
 import React from 'react';
 import { clsx } from 'clsx';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import { Button } from './ui/Button';
-import './Footer.css';
 
 export const Footer = () => {
     return (

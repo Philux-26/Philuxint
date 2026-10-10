@@ -13,7 +13,7 @@ import { Testimonials } from '../components/Testimonials'
 import { QuoteForm } from '../components/QuoteForm'
 import { FinalCta } from '../components/FinalCta'
 
-export const Home = () => {
+export default function Home() {
     return (
         <React.Fragment>
             <Hero />

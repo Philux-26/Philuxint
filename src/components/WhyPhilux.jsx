@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './WhyPhilux.css';
 
 const BENEFITS = [
     { title: "Professional Installation", text: "Expert engineering teams ensure seamless deployment with rigorous safety standards." },

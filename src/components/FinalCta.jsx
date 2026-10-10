@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from './ui/Button';
-import './FinalCta.css';
+
 import { Phone, MessageCircle } from 'lucide-react';
 
 export const FinalCta = () => {

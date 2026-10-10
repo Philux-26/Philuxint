@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/Button';
-import './QuoteForm.css';
 
 const SERVICES = ['Vehicle Tracking', 'Solar & Inverter', 'CCTV Surveillance', 'Electric Fencing', 'Access Control', 'Fire Alarm & Sprinkler'];
 const PROJECT_TYPES = ['Residential', 'Commercial', 'Industrial', 'Government/Public', 'Other'];

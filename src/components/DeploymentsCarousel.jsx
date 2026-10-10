@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Instagram as IgIcon, X } from 'lucide-react';
-import './DeploymentsCarousel.css';
 
 const DEPLOYMENTS = [
     { id: 1, title: 'Solar Array Integration', location: 'Lekki Phase 1', videoSrc: '/videos/sample_solar.mp4', fullVideoSrc: '/videos/full_solar.mp4', poster: '/images/solar_energy.png' },

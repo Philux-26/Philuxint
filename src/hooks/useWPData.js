@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 // This URL will be updated to your actual Headless WordPress REST API or GraphQL endpoint.
 // For example: 'https://backend.philuxint.com.ng/wp-json/wp/v2'
-const WP_API_URL = import.meta.env.VITE_WP_API_URL || '';
+const WP_API_URL = process.env.NEXT_PUBLIC_WP_API_URL || '';
 
 const FALLBACK_DATA = {
     seo: {

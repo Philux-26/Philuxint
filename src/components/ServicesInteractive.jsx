@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ShoppingCart } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import './ServicesInteractive.css';
+import Link from "next/link";
+
 
 const SERVICES = [
     {
@@ -94,7 +94,7 @@ export const ServicesInteractive = () => {
                                                     transition={{ delay: 0.15, duration: 0.4 }}
                                                     className="service-shop-cta"
                                                 >
-                                                    <Link to="/shop" className="label text-red shop-inline-link">
+                                                    <Link href="/shop" className="label text-red shop-inline-link">
                                                         Shop related equipment <ShoppingCart size={15} strokeWidth={2.5} />
                                                     </Link>
                                                 </motion.div>

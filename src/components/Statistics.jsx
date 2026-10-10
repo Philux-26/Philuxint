@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useWPData } from '../hooks/useWPData';
-import './Statistics.css';
 
 export const Statistics = () => {
     const { data } = useWPData('statistics');

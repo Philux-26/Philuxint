@@ -1,6 +1,6 @@
 import React from 'react';
 import { clsx } from 'clsx';
-import './Button.css';
+
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 
 export const Button = React.forwardRef(({

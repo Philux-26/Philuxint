@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { Button } from './ui/Button';
-import './FeaturedProjects.css';
 
 const PROJECTS = [
     { id: 1, title: 'National Bank HQ', category: 'SECURITY & ACCESS', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80', size: 'large' },

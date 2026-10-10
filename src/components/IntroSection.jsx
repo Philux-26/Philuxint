@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from './ui/Button';
-import './IntroSection.css';
 
 export const IntroSection = () => {
     return (

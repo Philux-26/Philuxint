@@ -1,12 +1,12 @@
+import Link from "next/link";
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { QuoteForm } from '../components/QuoteForm';
 import { LocationsMarquee } from '../components/LocationsMarquee';
-import './Contact.css';
 
-export const Contact = () => {
+export default function Contact() {
     return (
         <React.Fragment>
             <Helmet>

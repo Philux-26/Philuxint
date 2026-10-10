@@ -1,15 +1,17 @@
+import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import Link from "next/link";
+
 import { Helmet } from 'react-helmet-async';
 import { ChevronLeft, Calendar, Loader } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getSinglePost } from '../services/wp-api';
 import { CommentSection } from '../components/CommentSection';
 import { FinalCta } from '../components/FinalCta';
-import './BlogPost.css';
 
-export const BlogPost = () => {
-    const { id } = useParams();
+export default function BlogPost() {
+    const router = useRouter();
+    const { id } = router.query;
     const [post, setPost] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -36,7 +38,7 @@ export const BlogPost = () => {
         return (
             <div className="flex flex-col justify-center items-center h-screen bg-off-white">
                 <h1 className="text-3xl font-bold mb-4">Post Not Found</h1>
-                <Link to="/blog" className="text-red hover:underline">Return to Blog</Link>
+                <Link href="/blog" className="text-red hover:underline">Return to Blog</Link>
             </div>
         );
     }
@@ -53,7 +55,7 @@ export const BlogPost = () => {
                 {/* Visual Header block bleeds to top */}
                 <header className="single-post-header">
                     <div className="container">
-                        <Link to="/blog" className="back-link">
+                        <Link href="/blog" className="back-link">
                             <ChevronLeft size={16} /> Back to News
                         </Link>
 
@@ -101,11 +103,11 @@ export const BlogPost = () => {
                                 <hr className="sidebar-divider" />
                                 <h3 className="sidebar-title">Categories</h3>
                                 <ul className="sidebar-categories">
-                                    <li><Link to="/blog">Security Architectures</Link></li>
-                                    <li><Link to="/blog">Logistics & Tracking</Link></li>
-                                    <li><Link to="/blog">Renewable Energy</Link></li>
-                                    <li><Link to="/blog">Facility Management</Link></li>
-                                    <li><Link to="/blog" className="text-red font-bold">Internal Projects</Link></li>
+                                    <li><Link href="/blog">Security Architectures</Link></li>
+                                    <li><Link href="/blog">Logistics & Tracking</Link></li>
+                                    <li><Link href="/blog">Renewable Energy</Link></li>
+                                    <li><Link href="/blog">Facility Management</Link></li>
+                                    <li><Link href="/blog" className="text-red font-bold">Internal Projects</Link></li>
                                 </ul>
                             </div>
                         </aside>
