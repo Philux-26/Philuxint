@@ -1,4 +1,6 @@
 import React from 'react'
+import { SEO } from '../components/SEO'
+import { organizationSchema } from '../utils/seoSchemas'
 import { Hero } from '../components/Hero'
 import { IntroSection } from '../components/IntroSection'
 import { ServicesInteractive } from '../components/ServicesInteractive'
@@ -16,6 +18,12 @@ import { FinalCta } from '../components/FinalCta'
 export default function Home() {
     return (
         <React.Fragment>
+            <SEO
+                title="Philux International | Security, Solar, CCTV & Fleet Tracking Solutions"
+                description="Integrated technology, security, energy, and intelligent infrastructure solutions across Nigeria. Premium solar systems, CCTV surveillance, electric fencing, and vehicle tracking."
+                canonical="/"
+                schema={organizationSchema}
+            />
             <Hero />
             <IntroSection />
             <ServicesInteractive />

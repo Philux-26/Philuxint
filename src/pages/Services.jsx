@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { Shield, Zap, Car, Eye, Key, Flame, ShoppingCart } from 'lucide-react';
 import { HowWeWork } from '../components/HowWeWork';
 import { FinalCta } from '../components/FinalCta';
-import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/SEO';
+import { servicesSchema } from '../utils/seoSchemas';
 import Link from "next/link";
 
 
@@ -61,10 +62,12 @@ const SERVICES_DATA = [
 export default function Services() {
     return (
         <React.Fragment>
-            <Helmet>
-                <title>Our Services | Philux International</title>
-                <meta name="description" content="Explore Philux International's premium engineered services including Vehicle Tracking, Solar Power arrays, and Military-Grade CCTV systems." />
-            </Helmet>
+            <SEO
+                title="Our Engineering & Security Services | Philux International"
+                description="Explore Philux International's full suite of solutions: Solar & Inverter installations, Commercial CCTV, Electric Fencing, Vehicle Tracking, Biometric Access, and Fire Suppression."
+                canonical="/services"
+                schema={servicesSchema}
+            />
 
             {/* Unified Text Hero */}
             <section className="services-hero-optimized bg-graphite text-white">

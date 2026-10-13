@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingCart, Filter, Loader } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/SEO';
 import { FinalCta } from '../components/FinalCta';
 import { getProducts, getProductCategories } from '../services/wp-api';
 
@@ -39,10 +39,11 @@ export default function Shop() {
 
     return (
         <React.Fragment>
-            <Helmet>
-                <title>Shop | Philux Engineering Hardware</title>
-                <meta name="description" content="Procure commercial-grade infrastructure, surveillance, and energy equipment directly from Philux International." />
-            </Helmet>
+            <SEO
+                title="Shop Commercial Hardware & Security Equipment | Philux International"
+                description="Procure commercial-grade infrastructure, surveillance cameras, solar gear, and access control equipment directly from Philux International."
+                canonical="/shop"
+            />
 
             <section className="about-hero bg-graphite text-white">
                 <div className="about-hero-bg"></div>

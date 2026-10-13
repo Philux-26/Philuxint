@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Shield, Zap, Target, Users, HardHat, Cpu } from 'lucide-react';
 import { Statistics } from '../components/Statistics';
 import { FinalCta } from '../components/FinalCta';
-import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/SEO';
 
 const VALUES = [
     { icon: <Shield size={24} />, title: "Uncompromising Security", desc: "We deploy military-grade architecture in civilian environments, ensuring 100% asset protection." },
@@ -17,10 +17,11 @@ const VALUES = [
 export default function About() {
     return (
         <React.Fragment>
-            <Helmet>
-                <title>About Us | Philux International</title>
-                <meta name="description" content="Learn about Philux International's mission to pioneer integrated security, solar energy, and infrastructure solutions across Nigeria." />
-            </Helmet>
+            <SEO
+                title="About Us | Philux International Engineering & Infrastructure"
+                description="Learn about Philux International's mission to pioneer integrated security, solar energy, and infrastructure solutions across Nigeria."
+                canonical="/about"
+            />
 
             {/* About Hero */}
             <section className="about-hero bg-graphite text-white">

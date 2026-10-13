@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 
-import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/SEO';
 import { ChevronLeft, Calendar, Loader } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { getSinglePost } from '../services/wp-api';
@@ -45,10 +45,13 @@ export default function BlogPost() {
 
     return (
         <React.Fragment>
-            <Helmet>
-                <title>{post.title} | Philux Insights</title>
-                {/* Dynamically extract excerpt via regex if strictly necessary, but WP meta handles it */}
-            </Helmet>
+            <SEO
+                title={`${post.title} | Philux Insights`}
+                description={post.excerpt ? post.excerpt.replace(/<[^>]+>/g, '').slice(0, 160) : "Engineering brief and insights from Philux International."}
+                canonical={`/${post.slug || id}`}
+                ogType="article"
+                ogImage={post.featuredImage?.node?.sourceUrl || undefined}
+            />
 
             <article className="single-post-container bg-off-white">
 

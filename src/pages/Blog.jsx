@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, ArrowRight, Loader } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/SEO';
 import Link from "next/link";
 
 import { FinalCta } from '../components/FinalCta';
@@ -63,10 +63,11 @@ export default function Blog() {
 
     return (
         <React.Fragment>
-            <Helmet>
-                <title>Insights & News | Philux International</title>
-                <meta name="description" content="Stay updated with the latest technological developments in security, renewable energy, and facility management." />
-            </Helmet>
+            <SEO
+                title="Engineering Insights & News | Philux International"
+                description="Stay updated with the latest technological developments in security, renewable energy, and intelligent facility infrastructure from Philux International."
+                canonical="/blog"
+            />
 
             {/* Unified Text Hero */}
             <section className="blog-hero-optimized bg-graphite text-white">

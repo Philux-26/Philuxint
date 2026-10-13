@@ -2,17 +2,20 @@ import Link from "next/link";
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/SEO';
+import { organizationSchema } from '../utils/seoSchemas';
 import { QuoteForm } from '../components/QuoteForm';
 import { LocationsMarquee } from '../components/LocationsMarquee';
 
 export default function Contact() {
     return (
         <React.Fragment>
-            <Helmet>
-                <title>Contact Us | Philux International</title>
-                <meta name="description" content="Get in touch with Philux International to engineer a sophisticated, integrated ecosystem designed to secure assets and power progress." />
-            </Helmet>
+            <SEO
+                title="Contact Us | Philux International Lagos & Nationwide"
+                description="Get in touch with Philux International to engineer a sophisticated, integrated ecosystem designed to secure assets and power progress across Nigeria."
+                canonical="/contact"
+                schema={organizationSchema}
+            />
 
             {/* Unified Text Hero */}
             <section className="contact-hero-optimized bg-graphite text-white">

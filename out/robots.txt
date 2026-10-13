@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Disallow API / private paths if any
+Disallow: /api/
+
+# Host & Sitemap
+Host: https://philuxint.com.ng
+Sitemap: https://philuxint.com.ng/sitemap.xml
