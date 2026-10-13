@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/philuxin/public_html/
+    - /bin/cp -R out/* $DEPLOYPATH
+    - /bin/cp out/.htaccess $DEPLOYPATH
