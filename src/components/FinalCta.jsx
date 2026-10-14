@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from './ui/Button';
-
 import { Phone, MessageCircle } from 'lucide-react';
+import { trackContactClick } from '../utils/analytics';
 
 export const FinalCta = () => {
     return (
@@ -19,11 +19,21 @@ export const FinalCta = () => {
                     </Button>
 
                     <div className="cta-secondary-actions">
-                        <a href="https://wa.me/2349064646062" target="_blank" rel="noopener noreferrer" className="cta-link-icon">
+                        <a
+                            href="https://wa.me/2349064646062"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="cta-link-icon"
+                            onClick={() => trackContactClick('whatsapp')}
+                        >
                             <MessageCircle size={20} />
                             <span>WhatsApp Us</span>
                         </a>
-                        <a href="tel:+2349064646062" className="cta-link-icon">
+                        <a
+                            href="tel:+2349064646062"
+                            className="cta-link-icon"
+                            onClick={() => trackContactClick('phone')}
+                        >
                             <Phone size={20} />
                             <span>Call Sales</span>
                         </a>

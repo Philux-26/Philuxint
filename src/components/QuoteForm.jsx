@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/Button';
+import { trackLeadConversion } from '../utils/analytics';
 
 const SERVICES = ['Vehicle Tracking', 'Solar & Inverter', 'CCTV Surveillance', 'Electric Fencing', 'Access Control', 'Fire Alarm & Sprinkler'];
 const PROJECT_TYPES = ['Residential', 'Commercial', 'Industrial', 'Government/Public', 'Other'];
@@ -39,11 +40,24 @@ export const QuoteForm = () => {
                 throw new Error('Network response was not ok');
             }
 
+            trackLeadConversion({
+                service: formData.service,
+                projectType: formData.projectType,
+                location: formData.location,
+                contactMethod: formData.contactMethod
+            });
+
             setStep(4);
         } catch (error) {
             console.error('Submission failed:', error);
             // Fallback for visual prototyping in case backend isn't mounted yet
             alert("API connection failed. Please ensure you are viewing this on your live cPanel server with PHP enabled.");
+            trackLeadConversion({
+                service: formData.service,
+                projectType: formData.projectType,
+                location: formData.location,
+                contactMethod: formData.contactMethod
+            });
             setStep(4);
         } finally {
             setIsSubmitting(false);
