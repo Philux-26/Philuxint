@@ -13,7 +13,7 @@ const SERVICES_DATA = [
         id: 'vehicle-tracking',
         title: "Vehicle Tracking & Fleet Management",
         icon: <Car size={32} />,
-        image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        image: "/images/services/vehicle-tracking.jpg",
         description: "Maintain absolute control over your logistical assets. We deploy satellite-grade geospatial tracking systems that offer real-time telemetry, geo-fencing breach alerts, and predictive maintenance diagnostics to optimize your entire fleet operations securely.",
         features: ["Real-Time GPS Tracking", "Automated Geo-Fencing", "Fuel Matrix Analysis", "Remote Engine Deactivation"]
     },
@@ -21,7 +21,7 @@ const SERVICES_DATA = [
         id: 'solar-inverter',
         title: "Solar & Inverter Systems",
         icon: <Zap size={32} />,
-        image: "https://images.unsplash.com/photo-1509391366360-515434f0aa66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        image: "/images/services/solar-inverter.jpg",
         description: "Engineered specifically for extreme climates and high-load industrial operations, our bespoke solar and deep-cycle inverter arrays provide uninterrupted, clean power. Say goodbye to grid instability and expensive diesel contingencies.",
         features: ["High-Efficiency Monocrystalline Panels", "Industrial-Grade Batteries", "Smart Grid AI Balancing", "24/7 Power Continuity"]
     },
@@ -29,7 +29,7 @@ const SERVICES_DATA = [
         id: 'cctv',
         title: "CCTV Surveillance",
         icon: <Eye size={32} />,
-        image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        image: "/images/services/cctv-surveillance.jpg",
         description: "Achieve total visual dominance over your premises. We install military-grade optics featuring AI-driven facial recognition, thermal imaging for night operations, and robust NVR architectures that scale with enterprise growth.",
         features: ["4K Resolution Arrays", "AI Facial & Object Tracking", "Thermal Night Vision", "End-to-End Encryption"]
     },
@@ -37,7 +37,7 @@ const SERVICES_DATA = [
         id: 'electric-fencing',
         title: "Electric Fencing",
         icon: <Shield size={32} />,
-        image: "https://images.unsplash.com/photo-1512403754473-27835f7b9984?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        image: "/images/services/electric-fencing.jpg",
         description: "A highly formidable physical deterrent explicitly designed for perimeter zero-breach policies. Combining lethal-grade shock thresholds with smart-zone alarm integration, creating an impenetrable fortress around your most valuable assets.",
         features: ["Multi-Zone Integration", "High-Voltage Lethality Control", "Anti-Tamper Sensors", "Central Command Reporting"]
     },
@@ -45,7 +45,7 @@ const SERVICES_DATA = [
         id: 'access-control',
         title: "Access Control Systems",
         icon: <Key size={32} />,
-        image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        image: "/images/services/access-control.jpg",
         description: "Eliminate reliance on standard lock and key paradigms. We digitize your ingress and egress parameters with advanced biometric scanners, RFID arrays, and centralized identity management systems, ensuring total facility lockdown and audit trails.",
         features: ["Biometric Fingerprint & Iris", "Centralized Identity Management", "Time & Attendance Auditing", "Remote Lockdown Capabilities"]
     },
@@ -53,7 +53,7 @@ const SERVICES_DATA = [
         id: 'fire-alarm',
         title: "Fire Alarm & Sprinkler Systems",
         icon: <Flame size={32} />,
-        image: "https://images.unsplash.com/photo-1623912959827-897d19451996?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        image: "/images/services/fire-alarm.jpg",
         description: "Mitigate catastrophic asset destruction before it happens. Built strictly to NFPA global standards, our fire suppression and early-warning systems utilize advanced environmental telemetry to detect anomalies instantly.",
         features: ["Smoke & Thermal Detection", "NFPA Standard Compliance", "Automated Sprinkler Activation", "Immediate Station Dispatch"]
     }

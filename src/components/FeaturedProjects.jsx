@@ -4,10 +4,10 @@ import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { Button } from './ui/Button';
 
 const PROJECTS = [
-    { id: 1, title: 'National Bank HQ', category: 'SECURITY & ACCESS', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80', size: 'large' },
-    { id: 2, title: 'Apex Logistics Fleet', category: 'TRACKING', img: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=800&q=80', size: 'small' },
-    { id: 3, title: 'Solar Array Complex', category: 'ENERGY', img: 'https://images.unsplash.com/photo-1509391366360-1e97d5261688?auto=format&fit=crop&w=800&q=80', size: 'small' },
-    { id: 4, title: 'Industrial Fire Defense', category: 'FIRE SAFETY', img: 'https://images.unsplash.com/photo-1542385151-efd9000785a0?auto=format&fit=crop&w=1200&q=80', size: 'large' },
+    { id: 1, title: 'National Bank HQ', category: 'SECURITY & ACCESS', img: '/images/projects/national-bank.jpg', size: 'large' },
+    { id: 2, title: 'Apex Logistics Fleet', category: 'TRACKING', img: '/images/projects/apex-logistics.jpg', size: 'small' },
+    { id: 3, title: 'Solar Array Complex', category: 'ENERGY', img: '/images/projects/solar-complex.jpg', size: 'small' },
+    { id: 4, title: 'Industrial Fire Defense', category: 'FIRE SAFETY', img: '/images/projects/fire-defense.jpg', size: 'large' },
 ];
 
 export const FeaturedProjects = () => {

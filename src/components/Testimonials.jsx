@@ -8,21 +8,21 @@ const TESTIMONIALS = [
         name: "[Client Name]",
         org: "National Logistics Hub",
         service: "Integrated Security",
-        img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80"
+        img: "/images/testimonials/babatunde.jpg"
     },
     {
         quote: "Transitioning our manufacturing plant to Philux solar solutions reduced our operational downtime to absolute zero.",
         name: "[Client Name]",
         org: "Apex Manufacturing",
         service: "Solar & Inverter",
-        img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"
+        img: "/images/testimonials/emeka.jpg"
     },
     {
         quote: "From initial consultation to final integration, their team demonstrated an extraordinary understanding of modern access control.",
         name: "[Client Name]",
         org: "Horizon Corporate Towers",
         service: "Access Control",
-        img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
+        img: "/images/testimonials/hauwa.jpg"
     }
 ];
 

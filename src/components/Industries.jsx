@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const INDS = [
-    { name: 'Corporate & Commercial', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80' },
-    { name: 'Industrial & Manufacturing', img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80' },
-    { name: 'Residential Estates', img: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80' },
-    { name: 'Fleet & Logistics', img: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1200&q=80' }
+    { name: 'Corporate & Commercial', img: '/images/industries/corporate.jpg' },
+    { name: 'Industrial & Manufacturing', img: '/images/industries/industrial.jpg' },
+    { name: 'Residential Estates', img: '/images/industries/residential.jpg' },
+    { name: 'Fleet & Logistics', img: '/images/industries/logistics.jpg' }
 ];
 
 export const Industries = () => {
