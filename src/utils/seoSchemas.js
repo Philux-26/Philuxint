@@ -96,3 +96,56 @@ export const servicesSchema = {
         }
     ]
 };
+
+export const createBlogPostSchema = (post) => ({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt ? post.excerpt.replace(/<[^>]+>/g, '').slice(0, 160) : "Engineering brief and insights from Philux International.",
+    "image": post.imageUrl ? [post.imageUrl] : ["https://philuxint.com.ng/logo.png"],
+    "datePublished": post.date,
+    "dateModified": post.date,
+    "author": {
+        "@type": "Organization",
+        "name": "Philux International Engineering Team",
+        "url": "https://philuxint.com.ng"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Philux International",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://philuxint.com.ng/logo.png"
+        }
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://philuxint.com.ng/blog/${post.id}`
+    }
+});
+
+export const createShopSchema = (products = []) => ({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Philux Commercial Hardware & Security Equipment",
+    "itemListElement": products.map((product, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "item": {
+            "@type": "Product",
+            "name": product.name,
+            "category": product.category,
+            "image": product.img ? (product.img.startsWith('http') ? product.img : `https://philuxint.com.ng${product.img}`) : "https://philuxint.com.ng/logo.png",
+            "offers": {
+                "@type": "Offer",
+                "priceCurrency": "NGN",
+                "price": product.price ? product.price.replace(/[^0-9]/g, '') : "0",
+                "availability": "https://schema.org/InStock",
+                "seller": {
+                    "@type": "Organization",
+                    "name": "Philux International"
+                }
+            }
+        }
+    }))
+});

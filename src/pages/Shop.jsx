@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingCart, Filter, Loader } from 'lucide-react';
 import { SEO } from '../components/SEO';
+import { createShopSchema } from '../utils/seoSchemas';
 import { FinalCta } from '../components/FinalCta';
 import { getProducts, getProductCategories } from '../services/wp-api';
 
@@ -43,6 +44,7 @@ export default function Shop() {
                 title="Shop Commercial Hardware & Security Equipment | Philux International"
                 description="Procure commercial-grade infrastructure, surveillance cameras, solar gear, and access control equipment directly from Philux International."
                 canonical="/shop"
+                schema={createShopSchema(products)}
             />
 
             <section className="about-hero bg-graphite text-white">

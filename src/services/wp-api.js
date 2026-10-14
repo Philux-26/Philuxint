@@ -113,34 +113,67 @@ export const getPosts = async (first = 6, after = null, categoryId = null) => {
     return { posts, pageInfo: data.posts.pageInfo };
 };
 
-export const getSinglePost = async (id) => {
-    if (!WP_API_URL) return MOCK_POSTS.find(p => p.id === parseInt(id));
-
-    const query = `
-        query getPostById($id: ID!) {
-            post(id: $id, idType: DATABASE_ID) {
-                databaseId
-                title
-                content
-                date
-                featuredImage { node { sourceUrl } }
-                categories { nodes { name } }
-                tags { nodes { name } }
+export const getAllPostIds = async () => {
+    if (!WP_API_URL) return MOCK_POSTS.map(p => p.id.toString());
+    try {
+        const query = `
+            query getAllPostIds {
+                posts(first: 100) {
+                    nodes {
+                        databaseId
+                    }
+                }
             }
+        `;
+        const data = await fetchGraphQL(query);
+        if (data?.posts?.nodes?.length) {
+            return data.posts.nodes.map(p => p.databaseId.toString());
         }
-    `;
-    const data = await fetchGraphQL(query, { id: parseInt(id) });
-    const post = data.post;
+    } catch (err) {
+        console.warn("WPGraphQL post IDs fetch fallback:", err.message);
+    }
+    return MOCK_POSTS.map(p => p.id.toString());
+};
 
-    return {
-        id: post.databaseId,
-        title: post.title,
-        content: post.content,
-        date: new Date(post.date).toISOString().split('T')[0],
-        imageUrl: post.featuredImage?.node?.sourceUrl || null,
-        categoryName: post.categories?.nodes[0]?.name || "Uncategorized",
-        tags: post.tags?.nodes.map(t => t.name) || []
-    };
+export const getSinglePost = async (id) => {
+    const numericId = parseInt(id, 10);
+    if (!WP_API_URL) {
+        return MOCK_POSTS.find(p => p.id === numericId) || null;
+    }
+
+    try {
+        const query = `
+            query getPostById($id: ID!) {
+                post(id: $id, idType: DATABASE_ID) {
+                    databaseId
+                    title
+                    content
+                    date
+                    featuredImage { node { sourceUrl } }
+                    categories { nodes { name } }
+                    tags { nodes { name } }
+                }
+            }
+        `;
+        const data = await fetchGraphQL(query, { id: numericId });
+        const post = data?.post;
+        if (!post) {
+            return MOCK_POSTS.find(p => p.id === numericId) || null;
+        }
+
+        return {
+            id: post.databaseId,
+            title: post.title,
+            content: post.content,
+            date: new Date(post.date).toISOString().split('T')[0],
+            imageUrl: post.featuredImage?.node?.sourceUrl || null,
+            categoryName: post.categories?.nodes[0]?.name || "Uncategorized",
+            tags: post.tags?.nodes.map(t => t.name) || []
+        };
+    } catch (err) {
+        console.warn("WPGraphQL single post fetch fallback:", err.message);
+        return MOCK_POSTS.find(p => p.id === numericId) || null;
+    }
 };
 
 // ==========================================
