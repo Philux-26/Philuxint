@@ -8,37 +8,37 @@ const SERVICES = [
     {
         id: '01',
         title: 'VEHICLE TRACKING',
-        desc: 'Advanced real-time fleet monitoring and telematics for comprehensive asset management and security.',
+        desc: 'Track your cars and fleet in real time anywhere in Nigeria. Stop car theft with instant mobile alerts and remote engine shut-off.',
         img: '/images/vehicle_tracking.png'
     },
     {
         id: '02',
         title: 'SOLAR & INVERTER',
-        desc: 'Premium renewable energy installations delivering uninterrupted and sustainable power for mission-critical operations.',
+        desc: 'Say goodbye to power blackouts. Reliable solar and inverter systems to keep your security cameras, lights, and appliances running 24/7.',
         img: '/images/solar_energy.png'
     },
     {
         id: '03',
         title: 'CCTV SURVEILLANCE',
-        desc: 'High-definition intelligent surveillance networks providing crystal clear monitoring and situational awareness.',
+        desc: 'Crystal-clear HD cameras with night vision and live phone streaming. Monitor your home, shop, or office from anywhere at any time.',
         img: '/images/cctv_surveillance.png'
     },
     {
         id: '04',
         title: 'ELECTRIC FENCING',
-        desc: 'Robust perimeter defense systems engineered to delay, detect, and deter unauthorized access.',
+        desc: 'Keep intruders out of your property. Powerful perimeter electric fences with loud siren alarms that trigger the moment anyone touches it.',
         img: '/images/electric_fencing.png'
     },
     {
         id: '05',
         title: 'ACCESS CONTROL',
-        desc: 'Next-generation biometric and digital access management controlling personnel flow with absolute precision.',
+        desc: 'Control who enters your premises. Fingerprint door locks, card readers, and automatic gate barriers for residential homes and corporate offices.',
         img: '/images/access_control.png'
     },
     {
         id: '06',
         title: 'FIRE ALARM & SPRINKLER',
-        desc: 'Responsive fire detection and suppression infrastructure protecting life and catastrophic property loss.',
+        desc: 'Early smoke and heat warning systems that detect fire hazards instantly and protect your property from fire damage.',
         img: '/images/fire_protection.png'
     },
 ];

@@ -71,7 +71,7 @@ export const QuoteForm = () => {
                     <div className="label">REQUEST A QUOTE</div>
                     <h2 className="heading-section mt-4 mb-4" style={{ marginTop: '1rem', marginBottom: '1.5rem' }}>Start your project.</h2>
                     <p className="text-neutral-700" style={{ maxWidth: '400px' }}>
-                        Tell us about your requirements. Our engineering team will review and contact you with a tailored solution proposal.
+                        Tell us what you want to protect. Our security team will review your request and get back to you with a free, customized quotation.
                     </p>
                 </div>
 
@@ -206,7 +206,7 @@ export const QuoteForm = () => {
                                 >
                                     <div className="success-icon">✓</div>
                                     <h3 className="form-step-title" style={{ textAlign: 'center', marginBottom: '1rem' }}>Request Received</h3>
-                                    <p style={{ textAlign: 'center', color: 'var(--color-neutral-700)' }}>Thank you for choosing Philux. Your project request has been submitted securely and our engineering team will contact you shortly.</p>
+                                    <p style={{ textAlign: 'center', color: 'var(--color-neutral-700)' }}>Thank you for choosing Philux Security. Your request has been submitted securely and our security team will contact you shortly.</p>
                                 </motion.div>
                             )}
                         </AnimatePresence>

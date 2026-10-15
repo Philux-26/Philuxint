@@ -47,7 +47,7 @@ export const trackLeadConversion = ({ service, projectType, location, contactMet
     // Meta Pixel standard Lead event
     if (window.fbq) {
         window.fbq('track', 'Lead', {
-            content_name: service || 'Engineering Quote',
+            content_name: service || 'Security Quote',
             content_category: projectType,
             currency: 'NGN',
         });

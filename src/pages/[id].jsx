@@ -47,7 +47,7 @@ export default function BlogPost() {
         <React.Fragment>
             <SEO
                 title={`${post.title} | Philux Insights`}
-                description={post.excerpt ? post.excerpt.replace(/<[^>]+>/g, '').slice(0, 160) : "Engineering brief and insights from Philux International."}
+                description={post.excerpt ? post.excerpt.replace(/<[^>]+>/g, '').slice(0, 160) : "Security tips, car safety advice, and updates from Philux International."}
                 canonical={`/${post.slug || id}`}
                 ogType="article"
                 ogImage={post.featuredImage?.node?.sourceUrl || undefined}

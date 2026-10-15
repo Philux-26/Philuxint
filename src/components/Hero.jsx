@@ -11,7 +11,7 @@ const SERVICES = [
     { id: '06', title: 'FIRE PROTECTION', img: '/images/fire_protection.png' },
 ];
 
-const HEADLINES = ["SMART SOLUTIONS.", "SAFER SPACES.", "RELIABLE ENERGY."];
+const HEADLINES = ["TOTAL PROTECTION.", "SMART SECURITY.", "PEACE OF MIND."];
 
 export const Hero = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -68,7 +68,7 @@ export const Hero = () => {
                         transition={{ duration: 0.8, delay: 1 }}
                         className="hero-subtext"
                     >
-                        Integrated technology, security, and infrastructure systems engineered for tomorrow's challenges.
+                        Nigeria&apos;s trusted security services company. We protect homes, offices, estates, and vehicles with reliable CCTV, car tracking, electric fencing, and 24/7 solar backup power.
                     </motion.p>
 
                     <motion.div
@@ -78,7 +78,7 @@ export const Hero = () => {
                         className="hero-actions"
                     >
                         <Button variant="primary" icon="right" href="#quote">Request a Quote</Button>
-                        <Button variant="secondary" icon="up-right" href="#services" className="hero-btn-secondary">Explore Our Solutions</Button>
+                        <Button variant="secondary" icon="up-right" href="#services" className="hero-btn-secondary">Explore Our Services</Button>
                     </motion.div>
                 </div>
             </div>

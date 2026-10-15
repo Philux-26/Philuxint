@@ -19,8 +19,8 @@ export default function Home() {
     return (
         <React.Fragment>
             <SEO
-                title="Philux International | Security, Solar, CCTV & Fleet Tracking Solutions"
-                description="Integrated technology, security, energy, and intelligent infrastructure solutions across Nigeria. Premium solar systems, CCTV surveillance, electric fencing, and vehicle tracking."
+                title="Philux Security Services | CCTV, Car Tracking, Electric Fence & Solar Nigeria"
+                description="Leading security services company in Nigeria. Professional installation of CCTV cameras, vehicle tracking, electric fencing, access control, and 24/7 solar power backup in Lagos and nationwide."
                 canonical="/"
                 schema={organizationSchema}
             />

@@ -11,8 +11,8 @@ export default function Contact() {
     return (
         <React.Fragment>
             <SEO
-                title="Contact Us | Philux International Lagos & Nationwide"
-                description="Get in touch with Philux International to engineer a sophisticated, integrated ecosystem designed to secure assets and power progress across Nigeria."
+                title="Contact Philux Security | Lagos & Nationwide Security Company"
+                description="Contact Philux International, Nigeria's trusted security company for CCTV installation, vehicle tracking, electric fencing, access control, and solar energy."
                 canonical="/contact"
                 schema={organizationSchema}
             />
@@ -31,7 +31,7 @@ export default function Contact() {
                             Get in <span className="text-neutral-400">Touch.</span>
                         </h1>
                         <p className="hero-subtext text-neutral-300 max-w-2xl mt-6 font-medium mb-8">
-                            Whether you need a free estimate, strategic support, or a complete security installation, our local team in Lagos is ready to help you every step of the way.
+                            Whether you need CCTV cameras for your home, GPS trackers for your vehicles, or an electric fence for your compound, our security team in Lagos is ready to help you.
                         </p>
 
                         <div className="contact-social-flex" style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>

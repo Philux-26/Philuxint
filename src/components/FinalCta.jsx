@@ -10,7 +10,7 @@ export const FinalCta = () => {
 
             <div className="container cta-container">
                 <h2 className="heading-display cta-headline">
-                    LET'S BUILD A SMARTER,<br />SAFER ENVIRONMENT.
+                    PROTECT YOUR PROPERTY<br />&amp; ASSETS TODAY.
                 </h2>
 
                 <div className="cta-actions">

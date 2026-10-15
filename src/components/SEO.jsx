@@ -5,8 +5,8 @@ const SITE_URL = 'https://philuxint.com.ng';
 const DEFAULT_IMAGE = `${SITE_URL}/logo.png`;
 
 export const SEO = ({
-    title = "Philux International | Security, Solar, CCTV & Fleet Tracking Solutions",
-    description = "Integrated technology, security, energy, and intelligent infrastructure solutions across Nigeria. Premium solar systems, CCTV surveillance, electric fencing, vehicle tracking, access control, and fire protection.",
+    title = "Philux Security Services | CCTV, Car Tracking, Electric Fence & Solar Nigeria",
+    description = "Leading security services company in Nigeria. Professional installation of CCTV cameras, vehicle tracking, electric fencing, access control, and 24/7 solar power backup.",
     canonical,
     ogType = "website",
     ogImage = DEFAULT_IMAGE,

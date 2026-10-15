@@ -17,7 +17,7 @@ export default function BlogPost({ post }) {
         );
     }
 
-    const strippedExcerpt = post.excerpt ? post.excerpt.replace(/<[^>]+>/g, '').slice(0, 160) : "Engineering brief and insights from Philux International.";
+    const strippedExcerpt = post.excerpt ? post.excerpt.replace(/<[^>]+>/g, '').slice(0, 160) : "Security tips, car safety advice, and insights from Philux International.";
     const schemaData = createBlogPostSchema(post);
 
     return (

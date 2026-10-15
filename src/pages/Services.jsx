@@ -14,48 +14,48 @@ const SERVICES_DATA = [
         title: "Vehicle Tracking & Fleet Management",
         icon: <Car size={32} />,
         image: "/images/services/vehicle-tracking.jpg",
-        description: "Maintain absolute control over your logistical assets. We deploy satellite-grade geospatial tracking systems that offer real-time telemetry, geo-fencing breach alerts, and predictive maintenance diagnostics to optimize your entire fleet operations securely.",
-        features: ["Real-Time GPS Tracking", "Automated Geo-Fencing", "Fuel Matrix Analysis", "Remote Engine Deactivation"]
+        description: "Stay in total control of your personal cars, delivery vans, and commercial trucks anywhere in Nigeria. Our GPS vehicle tracking system lets you monitor live locations on your phone, check trip history, receive over-speed alerts, and shut down the engine remotely in case of theft.",
+        features: ["Live GPS Phone Tracking", "Remote Engine Shut-off", "Route & Speed History", "Theft & Geo-Fence Alerts"]
     },
     {
         id: 'solar-inverter',
-        title: "Solar & Inverter Systems",
+        title: "Solar & Inverter Power Backup",
         icon: <Zap size={32} />,
         image: "/images/services/solar-inverter.jpg",
-        description: "Engineered specifically for extreme climates and high-load industrial operations, our bespoke solar and deep-cycle inverter arrays provide uninterrupted, clean power. Say goodbye to grid instability and expensive diesel contingencies.",
-        features: ["High-Efficiency Monocrystalline Panels", "Industrial-Grade Batteries", "Smart Grid AI Balancing", "24/7 Power Continuity"]
+        description: "Power outages should never compromise your safety or comfort. We install durable solar panels, pure sine wave inverters, and long-lasting deep-cycle batteries to keep your security cameras, electric fences, lights, and appliances running 24/7 without noisy generators.",
+        features: ["Uninterrupted 24/7 Power", "Pure Sine Wave Inverters", "Long-Life Lithium & Deep-Cycle Batteries", "Zero Fuel & Zero Noise"]
     },
     {
         id: 'cctv',
-        title: "CCTV Surveillance",
+        title: "CCTV Camera Surveillance",
         icon: <Eye size={32} />,
         image: "/images/services/cctv-surveillance.jpg",
-        description: "Achieve total visual dominance over your premises. We install military-grade optics featuring AI-driven facial recognition, thermal imaging for night operations, and robust NVR architectures that scale with enterprise growth.",
-        features: ["4K Resolution Arrays", "AI Facial & Object Tracking", "Thermal Night Vision", "End-to-End Encryption"]
+        description: "Keep a watchful eye on your home, compound, warehouse, or office. We install crystal-clear HD and 4K security cameras with infrared night vision, motion alerts, and live phone streaming so you always know what is happening on your property from anywhere.",
+        features: ["Crystal Clear HD & 4K Video", "Night Vision & Motion Detection", "Live Viewing on Your Smartphone", "Hard Drive Recording & Playback"]
     },
     {
         id: 'electric-fencing',
-        title: "Electric Fencing",
+        title: "Perimeter Electric Fencing",
         icon: <Shield size={32} />,
         image: "/images/services/electric-fencing.jpg",
-        description: "A highly formidable physical deterrent explicitly designed for perimeter zero-breach policies. Combining lethal-grade shock thresholds with smart-zone alarm integration, creating an impenetrable fortress around your most valuable assets.",
-        features: ["Multi-Zone Integration", "High-Voltage Lethality Control", "Anti-Tamper Sensors", "Central Command Reporting"]
+        description: "Protect your compound from intruders and trespassers. We install neat, durable high-voltage electric security fences that deliver a strong deterrent shock to keep intruders away, combined with loud sirens that sound the alarm if anyone tries to cut or climb the fence.",
+        features: ["Strong Intruder Deterrent", "Loud Siren & Flasher Alerts", "Battery Backup During Blackouts", "Rust-Resistant Fence Materials"]
     },
     {
         id: 'access-control',
-        title: "Access Control Systems",
+        title: "Access Control & Smart Entry",
         icon: <Key size={32} />,
         image: "/images/services/access-control.jpg",
-        description: "Eliminate reliance on standard lock and key paradigms. We digitize your ingress and egress parameters with advanced biometric scanners, RFID arrays, and centralized identity management systems, ensuring total facility lockdown and audit trails.",
-        features: ["Biometric Fingerprint & Iris", "Centralized Identity Management", "Time & Attendance Auditing", "Remote Lockdown Capabilities"]
+        description: "Secure your doors, gates, and offices without messy keys. We install biometric fingerprint scanners, RFID card locks, video door intercoms, and automated gate barriers to ensure only authorized family members, visitors, and employees can enter your property.",
+        features: ["Biometric Fingerprint & Card Access", "Automated Gate Openers & Turnstiles", "Staff Attendance Records", "Video Intercoms for Visitors"]
     },
     {
         id: 'fire-alarm',
-        title: "Fire Alarm & Sprinkler Systems",
+        title: "Fire Alarm & Safety Systems",
         icon: <Flame size={32} />,
         image: "/images/services/fire-alarm.jpg",
-        description: "Mitigate catastrophic asset destruction before it happens. Built strictly to NFPA global standards, our fire suppression and early-warning systems utilize advanced environmental telemetry to detect anomalies instantly.",
-        features: ["Smoke & Thermal Detection", "NFPA Standard Compliance", "Automated Sprinkler Activation", "Immediate Station Dispatch"]
+        description: "Protect lives and valuable property before a fire spreads. We install sensitive smoke and heat detectors, manual break-glass alarms, and automated fire suppression systems for homes, commercial offices, schools, and industrial facilities across Nigeria.",
+        features: ["Early Smoke & Heat Detection", "Loud Emergency Warning Sirens", "Fire Extinguisher & Sprinkler Setup", "Routine Testing & Maintenance Support"]
     }
 ];
 
@@ -63,8 +63,8 @@ export default function Services() {
     return (
         <React.Fragment>
             <SEO
-                title="Our Engineering & Security Services | Philux International"
-                description="Explore Philux International's full suite of solutions: Solar & Inverter installations, Commercial CCTV, Electric Fencing, Vehicle Tracking, Biometric Access, and Fire Suppression."
+                title="Security Services in Nigeria | CCTV, Car Tracking & Solar - Philux"
+                description="Discover trusted security services in Nigeria by Philux: CCTV camera installation, GPS car tracking, electric fencing, access control, and 24/7 solar backup systems."
                 canonical="/services"
                 schema={servicesSchema}
             />
@@ -78,12 +78,12 @@ export default function Services() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <div className="label text-red mb-4">OUR SERVICES</div>
+                        <div className="label text-red mb-4">OUR SECURITY SERVICES</div>
                         <h1 className="hero-heading mt-4 mb-4" style={{ fontSize: '4.5rem', fontWeight: 800, lineHeight: 1.1 }}>
-                            Solutions You Can <span className="text-neutral-400">Trust.</span>
+                            Protection You Can <span className="text-neutral-400">Trust.</span>
                         </h1>
                         <p className="hero-subtext text-neutral-300 max-w-2xl mt-6 font-medium">
-                            From reliable solar power arrays to professional CCTV surveillance and vehicle tracking, our local technicians deliver long-lasting installations that keep your home and business secure.
+                            From 24/7 CCTV surveillance and GPS vehicle tracking to perimeter electric fencing and continuous solar backup power, our security technicians deliver dependable solutions you can trust.
                         </p>
                     </motion.div>
                 </div>

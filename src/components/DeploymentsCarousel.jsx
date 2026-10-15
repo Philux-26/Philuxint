@@ -31,9 +31,9 @@ export const DeploymentsCarousel = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <div className="label text-red mb-2">FIELD OPERATIONS</div>
-                        <h2 className="heading-section">Recent Deployments</h2>
-                        <p className="text-neutral-300 max-w-2xl mt-4">Witness our engineering teams in action across Nigeria. Hover to preview snippets, click to watch full deployments natively.</p>
+                        <div className="label text-red mb-2">RECENT WORK</div>
+                        <h2 className="heading-section">Security Installations in Action</h2>
+                        <p className="text-neutral-300 max-w-2xl mt-4">See our security technicians at work across Lagos and nationwide. Watch real installations of CCTV cameras, car tracking, electric fencing, and solar backup systems.</p>
                     </motion.div>
 
                     <motion.div

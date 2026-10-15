@@ -2,11 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const BENEFITS = [
-    { title: "Professional Installation", text: "Expert engineering teams ensure seamless deployment with rigorous safety standards." },
-    { title: "Integrated Solutions", text: "Unified infrastructure where security, power, and tracking systems work intelligently together." },
-    { title: "Technical Expertise", text: "Forward-thinking technology deployment grounded in decades of industry experience." },
-    { title: "Reliability Built-in", text: "Engineered solutions targeting zero downtime operations for mission-critical facilities." },
-    { title: "Ongoing Support", text: "Dedicated maintenance and monitoring ensuring your systems remain perfectly operational." }
+    { title: "Certified Technicians", text: "Experienced security technicians ensure clean, safe, and durable installations that follow standard safety codes." },
+    { title: "Complete Security Systems", text: "Your CCTV cameras, electric fence, vehicle tracking, and solar power work together smoothly for total protection." },
+    { title: "Proven Field Experience", text: "Years of practical experience protecting homes, commercial offices, schools, and vehicle fleets across Nigerian cities." },
+    { title: "24/7 Power Continuity", text: "Our systems stay online round the clock with solar and battery backup, so your security cameras never turn off during blackouts." },
+    { title: "Reliable Local Support", text: "Prompt customer service, regular maintenance, and quick warranty support to keep your systems running at all times." }
 ];
 
 export const WhyPhilux = () => {
@@ -16,10 +16,10 @@ export const WhyPhilux = () => {
 
                 <div className="why-left">
                     <div className="why-sticky">
-                        <div className="label">THE PHILUX STANDARD</div>
-                        <h2 className="heading-section mt-4" style={{ marginTop: '1rem', marginBottom: '1.5rem' }}>Why Philux</h2>
+                        <div className="label">THE PHILUX PROMISE</div>
+                        <h2 className="heading-section mt-4" style={{ marginTop: '1rem', marginBottom: '1.5rem' }}>Why Choose Philux</h2>
                         <p className="why-subtext">
-                            We transcend basic installation to deliver sophisticated infrastructure designed for maximum reliability and structural integrity.
+                            We don&apos;t just sell equipment. We install complete, dependable security systems built to protect your property and keep working when you need them most.
                         </p>
                     </div>
                 </div>

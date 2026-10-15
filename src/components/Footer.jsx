@@ -17,7 +17,7 @@ export const Footer = () => {
                             <img src="/logo.png" alt="Philux Logo" style={{ height: '36px', objectFit: 'contain' }} />
                         </a>
                         <p className="footer-positioning">
-                            Integrated technology, security, energy, and intelligent infrastructure solutions for a safer environment.
+                            Professional security services and solar backup power solutions for homes, businesses, and vehicles across Nigeria.
                         </p>
                         <div className="footer-socials" style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
                             <motion.a whileHover={{ y: -5, scale: 1.1, color: "var(--color-philux-red)" }} transition={{ duration: 0.2 }} href="https://www.facebook.com/philuxint" target="_blank" rel="noopener noreferrer" className="social-link" style={{ color: 'var(--color-neutral-300)' }}>

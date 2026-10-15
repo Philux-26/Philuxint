@@ -26,7 +26,7 @@ export const IntroSection = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="intro-statement heading-section"
                     >
-                        We are an integrated technology &amp; engineering firm delivering uncompromising security, reliable energy, and intelligent infrastructure solutions for modern environments.
+                        We are a leading security services company in Nigeria, providing trusted CCTV surveillance, vehicle tracking, access control, electric fencing, and 24/7 solar backup power to protect what matters most to you.
                     </motion.h2>
 
                     <motion.div
@@ -35,7 +35,7 @@ export const IntroSection = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.3 }}
                     >
-                        <Button variant="secondary" icon="right" href="#discover" className="intro-discover-btn">
+                        <Button variant="secondary" icon="right" href="/about" className="intro-discover-btn">
                             DISCOVER PHILUX
                         </Button>
                     </motion.div>

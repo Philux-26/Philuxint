@@ -64,8 +64,8 @@ export default function Blog() {
     return (
         <React.Fragment>
             <SEO
-                title="Engineering Insights & News | Philux International"
-                description="Stay updated with the latest technological developments in security, renewable energy, and intelligent facility infrastructure from Philux International."
+                title="Security Tips, Safety Advice & News | Philux International"
+                description="Helpful security guides, car tracking tips, CCTV advice, and solar power updates for Nigerian homeowners and businesses."
                 canonical="/blog"
             />
 
@@ -78,12 +78,12 @@ export default function Blog() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <div className="label text-red mb-4">OUR INSIGHTS</div>
+                        <div className="label text-red mb-4">SECURITY BLOG</div>
                         <h1 className="hero-heading mt-4 mb-4" style={{ fontSize: '4.5rem', fontWeight: 800, lineHeight: 1.1 }}>
-                            News & <span className="text-neutral-400">Knowledge.</span>
+                            News &amp; <span className="text-neutral-400">Security Tips.</span>
                         </h1>
                         <p className="hero-subtext text-neutral-300 max-w-2xl mt-6 font-medium">
-                            Read the latest deployment briefs, technological deep-dives, and strategic thought leadership from our engineering specialists.
+                            Practical security guides, car tracking advice, and solar power tips from our experienced security specialists in Nigeria.
                         </p>
                     </motion.div>
                 </div>

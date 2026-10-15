@@ -4,24 +4,24 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const TESTIMONIALS = [
     {
-        quote: "The level of engineering precision Philux brought to our facility's security infrastructure is unmatched in the region.",
+        quote: "Philux installed CCTV cameras and electric fencing for our facility in Lagos. The mobile phone viewing works smoothly and their installation was very neat. We now have total peace of mind.",
         name: "[Client Name]",
         org: "National Logistics Hub",
-        service: "Integrated Security",
+        service: "CCTV & Electric Fencing",
         img: "/images/testimonials/babatunde.jpg"
     },
     {
-        quote: "Transitioning our manufacturing plant to Philux solar solutions reduced our operational downtime to absolute zero.",
+        quote: "The solar inverter system installed by Philux powers our security cameras and office operations without interruption. No more blackouts or high diesel costs. Very dependable team.",
         name: "[Client Name]",
         org: "Apex Manufacturing",
-        service: "Solar & Inverter",
+        service: "Solar & Inverter Power",
         img: "/images/testimonials/emeka.jpg"
     },
     {
-        quote: "From initial consultation to final integration, their team demonstrated an extraordinary understanding of modern access control.",
+        quote: "We had vehicle trackers and biometric access installed across our corporate fleet and offices. The real-time tracking and gate control work flawlessly. Excellent after-sales service.",
         name: "[Client Name]",
         org: "Horizon Corporate Towers",
-        service: "Access Control",
+        service: "Vehicle Tracking & Access",
         img: "/images/testimonials/hauwa.jpg"
     }
 ];

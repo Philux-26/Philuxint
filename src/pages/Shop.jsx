@@ -41,8 +41,8 @@ export default function Shop() {
     return (
         <React.Fragment>
             <SEO
-                title="Shop Commercial Hardware & Security Equipment | Philux International"
-                description="Procure commercial-grade infrastructure, surveillance cameras, solar gear, and access control equipment directly from Philux International."
+                title="Buy Security Cameras, Car Trackers & Solar Systems | Philux Store"
+                description="Shop authentic CCTV cameras, GPS car trackers, solar inverters, batteries, and electric fence equipment with fast delivery across Nigeria."
                 canonical="/shop"
                 schema={createShopSchema(products)}
             />
@@ -55,12 +55,12 @@ export default function Shop() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
-                        <div className="label text-red">COMMERCIAL EQUIPMENT</div>
+                        <div className="label text-red">SECURITY &amp; SOLAR STORE</div>
                         <h1 className="hero-heading mt-4 mb-4">
-                            Hardware <span className="text-neutral-400">Shop.</span>
+                            Security <span className="text-neutral-400">Equipment.</span>
                         </h1>
                         <p className="hero-subtext text-neutral-300 max-w-2xl">
-                            Procure professional-grade infrastructure, surveillance, and energy equipment engineered for absolute reliability across demanding corporate environments.
+                            Buy genuine CCTV cameras, vehicle tracking devices, solar panels, inverters, and access control equipment at affordable prices in Nigeria.
                         </p>
                     </motion.div>
                 </div>
