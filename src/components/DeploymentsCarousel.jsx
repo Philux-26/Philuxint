@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Instagram as IgIcon, X } from 'lucide-react';
 
 const DEPLOYMENTS = [
-    { id: 1, title: 'Solar Array Integration', location: 'Lekki Phase 1', videoSrc: '/videos/sample_solar.mp4', fullVideoSrc: '/videos/full_solar.mp4', poster: '/images/solar_energy.png' },
-    { id: 2, title: 'CCTV Matrix Installation', location: 'Victoria Island HQ', videoSrc: '/videos/sample_cctv.mp4', fullVideoSrc: '/videos/full_cctv.mp4', poster: '/images/cctv_surveillance.png' },
-    { id: 3, title: 'Vehicle Tracking Deploy', location: 'Apapa Logistics', videoSrc: '/videos/sample_tracking.mp4', fullVideoSrc: '/videos/full_tracking.mp4', poster: '/images/vehicle_tracking.png' },
-    { id: 4, title: 'Corporate Access Control', location: 'Ikoyi Offices', videoSrc: '/videos/sample_access.mp4', fullVideoSrc: '/videos/full_access.mp4', poster: '/images/access_control.png' },
+    { id: 1, videoSrc: '/videos/Solar_installation.mp4', poster: '/images/solar_energy.png' },
+    { id: 2, videoSrc: '/videos/Inverter.mp4', poster: '/images/services/solar-inverter.jpg' },
+    { id: 3, videoSrc: '/videos/Smart_Lock.mp4', poster: '/images/services/access-control.jpg' },
+    { id: 4, videoSrc: '/videos/Ads.mp4', poster: '/images/services/cctv-surveillance.jpg' },
 ];
 
 export const DeploymentsCarousel = () => {
@@ -108,7 +108,7 @@ const DeploymentCard = ({ item, onSelect }) => {
             <video
                 ref={videoRef}
                 className={`deployment-video ${isPlaying ? 'playing' : ''}`}
-                preload="none"
+                preload="metadata"
                 loop
                 muted
                 playsInline
@@ -118,12 +118,7 @@ const DeploymentCard = ({ item, onSelect }) => {
             <div className="deployment-overlay">
                 <div className="deployment-status">
                     {isPlaying ? <div className="recording-dot" /> : <Play size={14} fill="white" />}
-                    <span>{isPlaying ? 'PREVIEWING' : 'CLICK FOR FULL'}</span>
-                </div>
-
-                <div className="deployment-info">
-                    <h3 className="deployment-title">{item.title}</h3>
-                    <p className="deployment-location">{item.location}</p>
+                    <span>{isPlaying ? 'PLAYING PREVIEW' : 'CLICK TO WATCH'}</span>
                 </div>
             </div>
         </motion.div>
@@ -150,20 +145,12 @@ const VideoModal = ({ item, onClose }) => {
                 onClick={(e) => e.stopPropagation()}
             >
                 <video
-                    src={item.fullVideoSrc || item.videoSrc}
+                    src={item.videoSrc}
                     controls
                     autoPlay
                     className="full-cinematic-player"
                     playsInline
                 />
-
-                <div className="video-modal-info">
-                    <h2>{item.title}</h2>
-                    <p>{item.location}</p>
-                    <div className="live-badge mt-4 border border-red text-red px-3 py-1 rounded inline-block text-sm font-bold bg-black bg-opacity-50 blur-0">
-                        NATIVE HTML5 THEATRE
-                    </div>
-                </div>
             </motion.div>
         </motion.div>
     );
