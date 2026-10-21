@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const INDS = [
-    { name: 'Corporate & Commercial', img: '/images/industries/corporate.jpg' },
-    { name: 'Industrial & Manufacturing', img: '/images/industries/industrial.jpg' },
-    { name: 'Residential Estates', img: '/images/industries/residential.jpg' },
-    { name: 'Fleet & Logistics', img: '/images/industries/logistics.jpg' }
+    { name: 'Corporate & Commercial', img: '/images/industries/corporate.webp' },
+    { name: 'Industrial & Manufacturing', img: '/images/industries/industrial.webp' },
+    { name: 'Residential Estates', img: '/images/industries/residential.webp' },
+    { name: 'Fleet & Logistics', img: '/images/industries/logistics.webp' }
 ];
 
 export const Industries = () => {

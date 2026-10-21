@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import { SEO } from '../components/SEO'
 import { organizationSchema } from '../utils/seoSchemas'
 import { Hero } from '../components/Hero'
@@ -24,6 +25,9 @@ export default function Home() {
                 canonical="/"
                 schema={organizationSchema}
             />
+            <Head>
+                <link rel="preload" as="image" href="/images/vehicle_tracking.webp" fetchPriority="high" />
+            </Head>
             <Hero />
             <IntroSection />
             <ServicesInteractive />

@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/Button';
 
 const SERVICES = [
-    { id: '01', title: 'VEHICLE TRACKING', img: '/images/vehicle_tracking.png' },
-    { id: '02', title: 'SOLAR & ENERGY', img: '/images/solar_energy.png' },
-    { id: '03', title: 'CCTV SURVEILLANCE', img: '/images/cctv_surveillance.png' },
-    { id: '04', title: 'ACCESS CONTROL', img: '/images/access_control.png' },
-    { id: '05', title: 'ELECTRIC FENCING', img: '/images/electric_fencing.png' },
+    { id: '01', title: 'VEHICLE TRACKING', img: '/images/vehicle_tracking.webp' },
+    { id: '02', title: 'SOLAR & ENERGY', img: '/images/solar_energy.webp' },
+    { id: '03', title: 'CCTV SURVEILLANCE', img: '/images/cctv_surveillance.webp' },
+    { id: '04', title: 'ACCESS CONTROL', img: '/images/access_control.webp' },
+    { id: '05', title: 'ELECTRIC FENCING', img: '/images/electric_fencing.webp' },
 ];
 
 const HEADLINES = ["TOTAL PROTECTION.", "SMART SECURITY.", "PEACE OF MIND."];
@@ -16,6 +16,14 @@ export const Hero = () => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {
+        // Preload all hero images in browser memory so slide transitions are instant
+        SERVICES.forEach((service) => {
+            if (typeof window !== 'undefined') {
+                const preloadImg = new window.Image();
+                preloadImg.src = service.img;
+            }
+        });
+
         const interval = setInterval(() => {
             setActiveIndex((prev) => (prev + 1) % SERVICES.length);
         }, 6000);
@@ -39,7 +47,12 @@ export const Hero = () => {
                         className="hero-image-layer"
                     >
                         <div className="image-overlay" />
-                        <img src={SERVICES[activeIndex].img} alt={SERVICES[activeIndex].title} />
+                        <img
+                            src={SERVICES[activeIndex].img}
+                            alt={SERVICES[activeIndex].title}
+                            fetchPriority={activeIndex === 0 ? "high" : "auto"}
+                            decoding="async"
+                        />
                     </motion.div>
                 </AnimatePresence>
             </div>
