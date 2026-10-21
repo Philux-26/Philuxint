@@ -28,7 +28,7 @@ export default function Home() {
             <IntroSection />
             <ServicesInteractive />
             <WhyPhilux />
-            <FeaturedProjects />
+            {/* <FeaturedProjects /> - Hidden portfolio section */}
             <DeploymentsCarousel />
             <Industries />
             <HowWeWork />

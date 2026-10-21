@@ -8,7 +8,6 @@ const SERVICES = [
     { id: '03', title: 'CCTV SURVEILLANCE', img: '/images/cctv_surveillance.png' },
     { id: '04', title: 'ACCESS CONTROL', img: '/images/access_control.png' },
     { id: '05', title: 'ELECTRIC FENCING', img: '/images/electric_fencing.png' },
-    { id: '06', title: 'FIRE PROTECTION', img: '/images/fire_protection.png' },
 ];
 
 const HEADLINES = ["TOTAL PROTECTION.", "SMART SECURITY.", "PEACE OF MIND."];

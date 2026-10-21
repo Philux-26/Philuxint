@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Instagram as IgIcon, X } from 'lucide-react';
 
 const DEPLOYMENTS = [
-    { id: 1, videoSrc: '/videos/Solar_installation.mp4', poster: '/images/solar_energy.png' },
-    { id: 2, videoSrc: '/videos/Inverter.mp4', poster: '/images/services/solar-inverter.jpg' },
-    { id: 3, videoSrc: '/videos/Smart_Lock.mp4', poster: '/images/services/access-control.jpg' },
-    { id: 4, videoSrc: '/videos/Ads.mp4', poster: '/images/services/cctv-surveillance.jpg' },
+    { id: 1, videoSrc: '/videos/Solar_installation.mp4' },
+    { id: 2, videoSrc: '/videos/Inverter.mp4' },
+    { id: 3, videoSrc: '/videos/Smart_Lock.mp4' },
+    { id: 4, videoSrc: '/videos/Ads.mp4' },
 ];
 
 export const DeploymentsCarousel = () => {
@@ -76,9 +76,6 @@ const DeploymentCard = ({ item, onSelect }) => {
     const handleMouseEnter = () => {
         setIsPlaying(true);
         if (videoRef.current) {
-            if (!videoRef.current.src) {
-                videoRef.current.src = item.videoSrc;
-            }
             videoRef.current.play().catch((e) => console.log('Video play error:', e));
         }
     };
@@ -87,7 +84,7 @@ const DeploymentCard = ({ item, onSelect }) => {
         setIsPlaying(false);
         if (videoRef.current) {
             videoRef.current.pause();
-            videoRef.current.currentTime = 0;
+            videoRef.current.currentTime = 0.5;
         }
     };
 
@@ -103,16 +100,14 @@ const DeploymentCard = ({ item, onSelect }) => {
             onTouchEnd={handleMouseLeave}
             onClick={onSelect}
         >
-            <div className="deployment-poster" style={{ backgroundImage: `url(${item.poster})` }}></div>
-
             <video
                 ref={videoRef}
+                src={`${item.videoSrc}#t=0.5`}
                 className={`deployment-video ${isPlaying ? 'playing' : ''}`}
                 preload="metadata"
                 loop
                 muted
                 playsInline
-                poster={item.poster}
             />
 
             <div className="deployment-overlay">
