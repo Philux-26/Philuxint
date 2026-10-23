@@ -50,7 +50,7 @@ export const Hero = () => {
                         <img
                             src={SERVICES[activeIndex].img}
                             alt={SERVICES[activeIndex].title}
-                            fetchPriority={activeIndex === 0 ? "high" : "auto"}
+                            fetchpriority={activeIndex === 0 ? "high" : "auto"}
                             decoding="async"
                         />
                     </motion.div>

@@ -50,7 +50,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    color: var(--color-neutral-400);
+    color: whitesmoke;
     font-size: 0.9rem;
 }
 
@@ -317,6 +317,69 @@
 .comment-reply-trigger:hover {
     text-decoration: underline;
     opacity: 0.8;
+}
+
+/* Comment Section Pagination */
+.comment-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    padding: 20px 24px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.comment-pagination-info {
+    font-size: 0.9rem;
+    color: var(--color-neutral-500);
+    font-weight: 600;
+}
+
+.comment-pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.comment-page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    color: var(--color-graphite);
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.comment-page-btn:hover:not(:disabled) {
+    background: var(--color-graphite);
+    color: #ffffff;
+    border-color: var(--color-graphite);
+}
+
+.comment-page-btn.active {
+    background: var(--color-red);
+    color: #ffffff;
+    border-color: var(--color-red);
+    box-shadow: 0 4px 12px rgba(200, 16, 46, 0.25);
+}
+
+.comment-page-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
 }
 
 /* The native submission Application */

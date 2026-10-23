@@ -26,7 +26,7 @@ export default function Home() {
                 schema={organizationSchema}
             />
             <Head>
-                <link rel="preload" as="image" href="/images/vehicle_tracking.webp" fetchPriority="high" />
+                <link rel="preload" as="image" href="/images/vehicle_tracking.webp" fetchpriority="high" />
             </Head>
             <Hero />
             <IntroSection />

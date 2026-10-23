@@ -1,64 +1,86 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, ArrowRight, Loader } from 'lucide-react';
+import { Calendar, ArrowRight, Loader, ChevronLeft, ChevronRight } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import Link from "next/link";
+import { useRouter } from 'next/router';
 
 import { FinalCta } from '../components/FinalCta';
 import { Button } from '../components/ui/Button';
 import { getPosts, getCategories } from '../services/wp-api';
 
+const POSTS_PER_PAGE = 9;
+
 export default function Blog() {
+    const router = useRouter();
     const [posts, setPosts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [activeCat, setActiveCat] = useState(null);
-    const [cursor, setCursor] = useState(null);
-    const [hasNextPage, setHasNextPage] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
-    const [isFetchingMore, setIsFetchingMore] = useState(false);
 
     useEffect(() => {
         getCategories().then(setCategories).catch(console.error);
     }, []);
 
+    // Read ?cat=ID query parameter from URL if arriving from post sidebar
+    useEffect(() => {
+        if (router.isReady && router.query.cat) {
+            const catId = parseInt(router.query.cat, 10);
+            if (!isNaN(catId)) {
+                setActiveCat(catId);
+                setCurrentPage(1);
+            }
+        }
+    }, [router.isReady, router.query.cat]);
+
     useEffect(() => {
         const fetchFeed = async () => {
-            cursor === null ? setIsLoading(true) : setIsFetchingMore(true);
+            setIsLoading(true);
             try {
-                const res = await getPosts(6, cursor, activeCat);
-                if (cursor === null) {
-                    setPosts(res.posts);
-                } else {
-                    setPosts(prev => [...prev, ...res.posts]);
-                }
-                setHasNextPage(res.pageInfo.hasNextPage);
-                setCursor(res.pageInfo.endCursor); // Ready for next fetch
+                // Fetch up to 100 posts for the active category for fast, instant client pagination
+                const res = await getPosts(100, null, activeCat);
+                setPosts(res.posts || []);
+                setCurrentPage(1);
             } catch (err) {
                 console.error("GraphQL API Failure loading posts", err);
             } finally {
                 setIsLoading(false);
-                setIsFetchingMore(false);
             }
         };
         fetchFeed();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [activeCat]); // activeCat triggers a fresh reset fetch, cursor load handled manually below
+    }, [activeCat]);
 
     const handleFilter = (catId) => {
         if (activeCat === catId) return;
         setActiveCat(catId);
-        setCursor(null); // Reset pagination cursor
+        setCurrentPage(1);
     };
 
-    const handleLoadMore = () => {
-        if (!hasNextPage || !cursor) return;
-        setIsFetchingMore(true);
-        getPosts(6, cursor, activeCat).then(res => {
-            setPosts(prev => [...prev, ...res.posts]);
-            setHasNextPage(res.pageInfo.hasNextPage);
-            setCursor(res.pageInfo.endCursor);
-            setIsFetchingMore(false);
-        });
+    // Calculate pagination values
+    const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
+    const paginatedPosts = posts.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
+
+    const handlePageChange = (pageNum) => {
+        if (pageNum === '...' || pageNum === currentPage || pageNum < 1 || pageNum > totalPages) return;
+        setCurrentPage(pageNum);
+        const feedElement = document.getElementById('blog-feed-container');
+        if (feedElement) {
+            feedElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const getPageNumbers = (current, total) => {
+        if (total <= 7) {
+            return Array.from({ length: total }, (_, i) => i + 1);
+        }
+        if (current <= 4) {
+            return [1, 2, 3, 4, 5, '...', total];
+        }
+        if (current >= total - 3) {
+            return [1, '...', total - 4, total - 3, total - 2, total - 1, total];
+        }
+        return [1, '...', current - 1, current, current + 1, '...', total];
     };
 
     return (
@@ -90,7 +112,7 @@ export default function Blog() {
             </section>
 
             {/* Dynamic Blog Grid */}
-            <section className="blog-feed-section bg-off-white">
+            <section id="blog-feed-container" className="blog-feed-section bg-off-white">
                 <div className="container">
 
                     {/* Category Filter Taxonomy */}
@@ -118,11 +140,19 @@ export default function Blog() {
                         <div className="blog-loader-container">
                             <Loader className="spinner text-red" size={48} />
                         </div>
+                    ) : posts.length === 0 ? (
+                        <div className="blog-empty-state" style={{ textAlign: 'center', padding: '5rem 1rem' }}>
+                            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.75rem' }}>No Articles Found</h3>
+                            <p className="text-neutral-600" style={{ marginBottom: '1.5rem' }}>There are no articles currently published under this category.</p>
+                            <Button variant="primary" onClick={() => handleFilter(null)}>
+                                View All Articles
+                            </Button>
+                        </div>
                     ) : (
                         <>
                             <div className="blog-grid-container">
                                 <AnimatePresence mode="popLayout">
-                                    {posts.map((post, index) => (
+                                    {paginatedPosts.map((post) => (
                                         <motion.article
                                             key={post.id}
                                             className="blog-card"
@@ -134,12 +164,20 @@ export default function Blog() {
                                         >
                                             <div className="blog-card-image">
                                                 <div className="blog-category-badge">{post.categoryName}</div>
-                                                <img src={post.imageUrl} alt={post.title} />
+                                                <img
+                                                    src={post.imageUrl}
+                                                    alt={post.title}
+                                                    loading="lazy"
+                                                    onError={(e) => {
+                                                        e.currentTarget.onerror = null;
+                                                        e.currentTarget.src = "/images/cctv_surveillance.webp";
+                                                    }}
+                                                />
                                             </div>
                                             <div className="blog-card-content">
                                                 <div className="blog-meta">
                                                     <Calendar size={14} className="text-red" />
-                                                    <span>{post.date}</span>
+                                                    <span className="blog-date" style={{ color: 'whitesmoke' }}>{post.date}</span>
                                                 </div>
                                                 <h3 className="blog-title" dangerouslySetInnerHTML={{ __html: post.title }}></h3>
 
@@ -155,7 +193,7 @@ export default function Blog() {
                                                 <p className="blog-excerpt" dangerouslySetInnerHTML={{ __html: post.excerpt }}></p>
 
                                                 <div className="blog-card-action">
-                                                    <Link href={`/blog/${post.id}`} className="blog-read-more" aria-label={`Read more about ${post.title}`}>
+                                                    <Link href={`/blog/${post.slug || post.id}`} className="blog-read-more" aria-label={`Read more about ${post.title}`}>
                                                         Read Full Post <ArrowRight size={16} />
                                                     </Link>
                                                 </div>
@@ -165,17 +203,46 @@ export default function Blog() {
                                 </AnimatePresence>
                             </div>
 
-                            {/* Pagination Logic */}
-                            {hasNextPage && (
-                                <div className="blog-load-more-container">
-                                    <Button
-                                        variant="primary"
-                                        onClick={handleLoadMore}
-                                        disabled={isFetchingMore}
+                            {/* Page Pagination Controls (9 cards per page) */}
+                            {totalPages > 1 && (
+                                <nav className="blog-pagination" aria-label="Blog articles pagination">
+                                    <button
+                                        type="button"
+                                        className="pagination-btn pagination-nav"
+                                        onClick={() => handlePageChange(currentPage - 1)}
+                                        disabled={currentPage === 1}
+                                        aria-label="Previous Page"
                                     >
-                                        {isFetchingMore ? 'Loading...' : 'Load Older Posts'}
-                                    </Button>
-                                </div>
+                                        <ChevronLeft size={18} /> Prev
+                                    </button>
+
+                                    {getPageNumbers(currentPage, totalPages).map((p, idx) => (
+                                        p === '...' ? (
+                                            <span key={`ellipsis-${idx}`} className="pagination-ellipsis">&hellip;</span>
+                                        ) : (
+                                            <button
+                                                key={p}
+                                                type="button"
+                                                className={`pagination-btn ${currentPage === p ? 'active' : ''}`}
+                                                onClick={() => handlePageChange(p)}
+                                                aria-label={`Page ${p}`}
+                                                aria-current={currentPage === p ? 'page' : undefined}
+                                            >
+                                                {p}
+                                            </button>
+                                        )
+                                    ))}
+
+                                    <button
+                                        type="button"
+                                        className="pagination-btn pagination-nav"
+                                        onClick={() => handlePageChange(currentPage + 1)}
+                                        disabled={currentPage === totalPages}
+                                        aria-label="Next Page"
+                                    >
+                                        Next <ChevronRight size={18} />
+                                    </button>
+                                </nav>
                             )}
                         </>
                     )}

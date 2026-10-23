@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageSquare, CornerDownRight, Loader } from 'lucide-react';
+import { MessageSquare, CornerDownRight, Loader, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getComments, submitComment } from '../services/wp-api';
 import { Button } from './ui/Button';
 
@@ -14,6 +14,11 @@ export const CommentSection = ({ postId }) => {
     const [replyTo, setReplyTo] = useState(null); // stores { id, author_name }
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitSuccess, setSubmitSuccess] = useState(false);
+    const [submitMessage, setSubmitMessage] = useState('');
+
+    // Pagination State (Prevents page from stretching infinitely with many comments)
+    const [currentPage, setCurrentPage] = useState(1);
+    const commentsPerPage = 5;
 
     useEffect(() => {
         getComments(postId).then(data => {
@@ -25,41 +30,86 @@ export const CommentSection = ({ postId }) => {
         });
     }, [postId]);
 
+    // Root comments (top-level threads)
+    const rootComments = comments.filter(c => {
+        return !c.parentId || c.parentId === 0 || c.parentId === '0' || c.parentId === null;
+    });
+
+    const totalPages = Math.max(1, Math.ceil(rootComments.length / commentsPerPage));
+
+    useEffect(() => {
+        if (currentPage > totalPages) {
+            setCurrentPage(Math.max(1, totalPages));
+        }
+    }, [totalPages, currentPage]);
+
+    const paginatedRoots = rootComments.slice((currentPage - 1) * commentsPerPage, currentPage * commentsPerPage);
+
+    const handleCommentPageChange = (pageNum) => {
+        if (pageNum < 1 || pageNum > totalPages) return;
+        setCurrentPage(pageNum);
+        const headerEl = document.getElementById('comments-discussion-header');
+        if (headerEl) {
+            headerEl.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     const handleCommentSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
         setSubmitSuccess(false);
+        setSubmitMessage('');
 
         try {
             const parentId = replyTo ? replyTo.id : 0;
             const newComment = await submitComment(postId, name, email, content, parentId);
 
-            // Optimistically update UI
+            // Optimistically update UI so user immediately sees their comment
             setComments(prev => [...prev, newComment]);
             setName('');
             setEmail('');
             setContent('');
             setReplyTo(null);
             setSubmitSuccess(true);
+            setSubmitMessage(
+                newComment.isPending
+                    ? "Thank you! Your comment was received and will appear once approved by admin."
+                    : "Comment successfully posted!"
+            );
+
+            // If a root comment was submitted, reset to page 1 so user immediately sees it
+            if (!parentId) {
+                setCurrentPage(1);
+            }
+
+            // Fetch latest persisted comments from WordPress backend
+            setTimeout(() => {
+                getComments(postId).then(data => {
+                    if (data && data.length > 0) setComments(data);
+                }).catch(console.error);
+            }, 1200);
 
             // Clear success message after delay
-            setTimeout(() => setSubmitSuccess(false), 4000);
+            setTimeout(() => setSubmitSuccess(false), 6000);
         } catch (error) {
-            console.error('Submit comment error', error);
-            alert("Failed to post comment. Ensure the network is connected or WP API allows anonymous comments in Settings.");
+            console.error('Submit comment error:', error);
+            alert(error.message || "Failed to post comment. Ensure the network is connected or WordPress allows comments in Settings.");
         } finally {
             setIsSubmitting(false);
         }
     };
 
-    // --- RECURSIVE THREADING ---
+    // --- RECURSIVE THREADING (Paginated by top-level roots) ---
     const renderComments = (parentId = null, depth = 0) => {
-        const filtered = comments.filter(c => c.parentId === parentId);
-        if (filtered.length === 0) return null;
+        const list = parentId === null
+            ? paginatedRoots
+            : comments.filter(c => String(c.parentId) === String(parentId));
+
+        if (list.length === 0) return null;
 
         return (
             <div className={`comment-tier ${depth > 0 ? "comment-nested" : ""}`}>
-                {filtered.map(comment => (
+                {list.map(comment => (
                     <div key={comment.id} className="comment-block">
                         <div className="comment-head">
                             <span className="comment-author">{comment.author_name}</span>
@@ -70,9 +120,10 @@ export const CommentSection = ({ postId }) => {
                         {/* Inline Reply Trigger */}
                         {depth < 3 && (
                             <button
+                                type="button"
                                 onClick={() => {
                                     setReplyTo({ id: comment.id, author_name: comment.author_name });
-                                    document.getElementById('comment-form').scrollIntoView({ behavior: 'smooth' });
+                                    document.getElementById('comment-form')?.scrollIntoView({ behavior: 'smooth' });
                                 }}
                                 className="comment-reply-trigger"
                             >
@@ -80,7 +131,7 @@ export const CommentSection = ({ postId }) => {
                             </button>
                         )}
 
-                        {/* Recursively generate children */}
+                        {/* Recursively generate children nested underneath */}
                         {renderComments(comment.id, depth + 1)}
                     </div>
                 ))}
@@ -90,7 +141,7 @@ export const CommentSection = ({ postId }) => {
 
     return (
         <section className="comment-section">
-            <h3 className="comment-section-header">
+            <h3 id="comments-discussion-header" className="comment-section-header">
                 <MessageSquare size={28} className="icon-red" /> Discussion ({comments.length})
             </h3>
 
@@ -103,7 +154,48 @@ export const CommentSection = ({ postId }) => {
                     {comments.length === 0 ? (
                         <p className="comment-empty">There are no comments on this post yet. Be the first to share your thoughts!</p>
                     ) : (
-                        renderComments(null, 0)
+                        <>
+                            {renderComments(null, 0)}
+
+                            {/* Comment Pagination Controls */}
+                            {totalPages > 1 && (
+                                <div className="comment-pagination">
+                                    <span className="comment-pagination-info">
+                                        Page {currentPage} of {totalPages} &bull; ({comments.length} total {comments.length === 1 ? 'comment' : 'comments'})
+                                    </span>
+                                    <div className="comment-pagination-controls">
+                                        <button
+                                            type="button"
+                                            className="comment-page-btn"
+                                            onClick={() => handleCommentPageChange(currentPage - 1)}
+                                            disabled={currentPage === 1}
+                                            aria-label="Previous Comments Page"
+                                        >
+                                            <ChevronLeft size={16} />
+                                        </button>
+                                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => (
+                                            <button
+                                                key={pageNum}
+                                                type="button"
+                                                className={`comment-page-btn ${currentPage === pageNum ? 'active' : ''}`}
+                                                onClick={() => handleCommentPageChange(pageNum)}
+                                            >
+                                                {pageNum}
+                                            </button>
+                                        ))}
+                                        <button
+                                            type="button"
+                                            className="comment-page-btn"
+                                            onClick={() => handleCommentPageChange(currentPage + 1)}
+                                            disabled={currentPage === totalPages}
+                                            aria-label="Next Comments Page"
+                                        >
+                                            <ChevronRight size={16} />
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+                        </>
                     )}
                 </div>
             )}
@@ -157,7 +249,7 @@ export const CommentSection = ({ postId }) => {
                             {isSubmitting ? 'Posting...' : 'Post Comment'}
                         </Button>
                         {submitSuccess && (
-                            <span className="submit-success">Comment successfully posted!</span>
+                            <span className="submit-success">{submitMessage || "Comment successfully posted!"}</span>
                         )}
                     </div>
                 </form>

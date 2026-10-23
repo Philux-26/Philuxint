@@ -34,14 +34,35 @@ export default function Contact() {
                             Whether you need CCTV cameras for your home, GPS trackers for your vehicles, or an electric fence for your compound, our security team in Lagos is ready to help you.
                         </p>
 
-                        <div className="contact-social-flex" style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
-                            <motion.a whileHover={{ y: -5, backgroundColor: 'rgba(200, 16, 46, 0.8)' }} href="https://www.facebook.com/philuxint" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', borderRadius: '50%', backgroundColor: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#fff', transition: 'background-color 0.3s ease' }}>
+                        <div className="contact-social-flex">
+                            <motion.a
+                                whileHover={{ y: -5 }}
+                                href="https://www.facebook.com/philuxint"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="contact-social-link"
+                                aria-label="Visit Philux International on Facebook"
+                            >
                                 <Facebook size={24} strokeWidth={1.5} />
                             </motion.a>
-                            <motion.a whileHover={{ y: -5, backgroundColor: 'rgba(200, 16, 46, 0.8)' }} href="https://www.instagram.com/philuxint/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', borderRadius: '50%', backgroundColor: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#fff', transition: 'background-color 0.3s ease' }}>
+                            <motion.a
+                                whileHover={{ y: -5 }}
+                                href="https://www.instagram.com/philuxint/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="contact-social-link"
+                                aria-label="Visit Philux International on Instagram"
+                            >
                                 <Instagram size={24} strokeWidth={1.5} />
                             </motion.a>
-                            <motion.a whileHover={{ y: -5, backgroundColor: 'rgba(200, 16, 46, 0.8)' }} href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', borderRadius: '50%', backgroundColor: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#fff', transition: 'background-color 0.3s ease' }}>
+                            <motion.a
+                                whileHover={{ y: -5 }}
+                                href="https://linkedin.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="contact-social-link"
+                                aria-label="Visit Philux International on LinkedIn"
+                            >
                                 <Linkedin size={24} strokeWidth={1.5} />
                             </motion.a>
                         </div>
@@ -71,7 +92,7 @@ export default function Contact() {
                         <motion.div className="intel-glass-card" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}>
                             <div className="icon-wrapper"><Mail size={28} /></div>
                             <h4>Email Address</h4>
-                            <p>engineering@philux.com<br />support@philux.com</p>
+                            <p>info@philuxint.com.ng</p>
                         </motion.div>
 
                         <motion.div className="intel-glass-card" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }}>
