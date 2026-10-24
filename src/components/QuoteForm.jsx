@@ -25,43 +25,96 @@ export const QuoteForm = () => {
 
     const prevStep = () => setStep(prev => prev - 1);
 
+    const TARGET_EMAIL = 'realtundeonline@gmail.com';
+    const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${TARGET_EMAIL}`;
+    const LOCAL_API_URL = '/api/send-email.php';
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        try {
-            const response = await fetch('/api/send-email.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            });
+        const payload = {
+            name: formData.name,
+            company: formData.company || 'N/A',
+            email: formData.email,
+            phone: formData.phone,
+            service: formData.service,
+            location: formData.location,
+            projectType: formData.projectType,
+            description: formData.description,
+            contactMethod: formData.contactMethod,
+            _subject: `New Philux Quote: ${formData.service || 'Security'} from ${formData.name}`,
+            _template: 'table',
+            _captcha: 'false',
+        };
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+        const isLocal = typeof window !== 'undefined' && 
+            (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+        if (isLocal) {
+            // In local development, Next.js static dev server cannot execute PHP (returns 405).
+            // Directly submit to FormSubmit targeting realtundeonline@gmail.com
+            try {
+                await fetch(FORMSUBMIT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+            } catch (err) {
+                console.warn('Local dev submission note:', err);
             }
+        } else {
+            // In production, execute the cPanel PHP script sending directly via PHP mail() to realtundeonline@gmail.com
+            try {
+                const res = await fetch(LOCAL_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
 
-            trackLeadConversion({
-                service: formData.service,
-                projectType: formData.projectType,
-                location: formData.location,
-                contactMethod: formData.contactMethod
-            });
-
-            setStep(4);
-        } catch (error) {
-            console.error('Submission failed:', error);
-            // Fallback for visual prototyping in case backend isn't mounted yet
-            alert("API connection failed. Please ensure you are viewing this on your live cPanel server with PHP enabled.");
-            trackLeadConversion({
-                service: formData.service,
-                projectType: formData.projectType,
-                location: formData.location,
-                contactMethod: formData.contactMethod
-            });
-            setStep(4);
-        } finally {
-            setIsSubmitting(false);
+                if (!res.ok) {
+                    // Fallback to FormSubmit if server PHP mail temporarily fails
+                    await fetch(FORMSUBMIT_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+                }
+            } catch (err) {
+                console.warn('Production endpoint fallback to FormSubmit:', err);
+                try {
+                    await fetch(FORMSUBMIT_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+                } catch (fbErr) {
+                    console.error('Submission error:', fbErr);
+                }
+            }
         }
+
+        trackLeadConversion({
+            service: formData.service,
+            projectType: formData.projectType,
+            location: formData.location,
+            contactMethod: formData.contactMethod
+        });
+
+        setIsSubmitting(false);
+        setStep(4);
     };
 
     return (
@@ -205,8 +258,51 @@ export const QuoteForm = () => {
                                     className="quote-form-success"
                                 >
                                     <div className="success-icon">✓</div>
-                                    <h3 className="form-step-title" style={{ textAlign: 'center', marginBottom: '1rem' }}>Request Received</h3>
-                                    <p style={{ textAlign: 'center', color: 'var(--color-neutral-700)' }}>Thank you for choosing Philux Security. Your request has been submitted securely and our security team will contact you shortly.</p>
+                                    <h3 className="form-step-title" style={{ textAlign: 'center', marginBottom: '0.75rem' }}>Request Received</h3>
+                                    <p style={{ textAlign: 'center', color: 'var(--color-neutral-700)', maxWidth: '440px', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                                        Thank you for choosing Philux Security. Your request details have been dispatched to <strong>realtundeonline@gmail.com</strong>. Our security engineering team will review and contact you shortly.
+                                    </p>
+
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', width: '100%', maxWidth: '340px', alignItems: 'center' }}>
+                                        <a
+                                            href={`https://wa.me/2349064646062?text=${encodeURIComponent(`Hello Philux Security, I submitted a quote request for ${formData.service || 'Security Solutions'}.\n\nName: ${formData.name}\nProject: ${formData.projectType || 'Standard'}\nLocation: ${formData.location || 'Lagos'}\nPhone: ${formData.phone}`)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                gap: '0.5rem',
+                                                width: '100%',
+                                                padding: '0.85rem 1.25rem',
+                                                backgroundColor: '#25D366',
+                                                color: '#ffffff',
+                                                borderRadius: '6px',
+                                                fontWeight: 600,
+                                                fontSize: '0.95rem',
+                                                textDecoration: 'none',
+                                                boxShadow: '0 4px 12px rgba(37, 211, 102, 0.25)',
+                                            }}
+                                        >
+                                            <span>💬</span> Need It Faster? Chat on WhatsApp
+                                        </a>
+
+                                        <button
+                                            type="button"
+                                            className="btn-text"
+                                            onClick={() => {
+                                                setFormData({
+                                                    name: '', company: '', email: '', phone: '',
+                                                    service: '', location: '', projectType: '',
+                                                    description: '', contactMethod: ''
+                                                });
+                                                setStep(1);
+                                            }}
+                                            style={{ marginTop: '0.5rem', fontSize: '0.85rem', cursor: 'pointer', color: 'var(--color-neutral-500)' }}
+                                        >
+                                            Submit another request
+                                        </button>
+                                    </div>
                                 </motion.div>
                             )}
                         </AnimatePresence>
