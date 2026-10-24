@@ -400,19 +400,6 @@ export default function Shop({ initialProducts = [], initialCategories = [] }) {
                                                                 onExpire={() => handleProductExpire(product.id)}
                                                             />
                                                         )}
-
-                                                        <div className="product-grand-overlay">
-                                                            <button
-                                                                type="button"
-                                                                className="btn-premium-cart"
-                                                                onClick={(e) => {
-                                                                    e.stopPropagation();
-                                                                    openProductModal(product);
-                                                                }}
-                                                            >
-                                                                <Eye size={18} /> View Specs &amp; Gallery
-                                                            </button>
-                                                        </div>
                                                     </div>
 
                                                     {/* Card Body */}
