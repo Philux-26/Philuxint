@@ -288,12 +288,150 @@
     }
 }
 
+/* Mobile Screen Responsive (Matching Shop Page Architecture)
+   Strictly scoped to mobile screen - desktop remains 100% untouched */
 @media (max-width: 768px) {
-    .blog-3-grid {
-        grid-template-columns: 1fr;
-    }
-
+    /* 1. Hero Section */
     .blog-hero-optimized {
         padding-top: 140px;
+        padding-bottom: 50px;
+    }
+
+    .blog-hero-optimized .hero-heading {
+        font-size: 2.25rem !important;
+        line-height: 1.15 !important;
+    }
+
+    .blog-hero-optimized .hero-subtext {
+        font-size: 1rem;
+    }
+
+    /* 2. Section Padding */
+    .blog-feed-section {
+        padding: 40px 0 80px;
+    }
+
+    /* 3. Category Filter Tabs (Handled the same way as Shop Page on mobile) */
+    .blog-filter-container {
+        margin-bottom: 32px;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .blog-filter-tabs {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        max-width: 100%;
+        padding: 8px 12px;
+        gap: 8px;
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .blog-filter-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-pill {
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding: 8px 18px;
+        font-size: 0.85rem;
+    }
+
+    /* 4. Single-Column Card Grid (Handled the same way as Shop Page on mobile) */
+    .blog-grid-container {
+        grid-template-columns: 1fr !important;
+        gap: 24px;
+        margin-bottom: 50px;
+    }
+
+    /* 5. Blog Card Formatting on Mobile */
+    .blog-card {
+        border-radius: 12px;
+    }
+
+    .blog-card-image {
+        aspect-ratio: 16 / 10;
+        height: auto;
+        min-height: 190px;
+    }
+
+    .blog-category-badge {
+        top: 14px;
+        left: 14px;
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+
+    .blog-card-content {
+        padding: 20px 18px;
+    }
+
+    .blog-meta {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
+
+    .blog-title {
+        font-size: 1.15rem;
+        line-height: 1.35;
+        margin-bottom: 10px;
+    }
+
+    .blog-excerpt {
+        font-size: 0.92rem;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .blog-read-more {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* 6. Pagination on Mobile */
+    .blog-pagination {
+        gap: 6px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .pagination-btn {
+        min-width: 40px;
+        height: 40px;
+        padding: 0 12px;
+        font-size: 0.85rem;
+    }
+
+    .pagination-nav {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-hero-optimized .hero-heading {
+        font-size: 1.95rem !important;
+    }
+
+    .blog-card-content {
+        padding: 16px 14px;
+    }
+
+    .filter-pill {
+        padding: 7px 14px;
+        font-size: 0.8rem;
+    }
+
+    .pagination-btn {
+        min-width: 36px;
+        height: 36px;
+        padding: 0 10px;
+        font-size: 0.8rem;
     }
 }
