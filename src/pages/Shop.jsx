@@ -121,13 +121,13 @@ function ModalCountdown({ targetDate, onExpire }) {
 
 const PRODUCTS_PER_PAGE = 9;
 
-export default function Shop() {
-    const [products, setProducts] = useState([]);
-    const [categories, setCategories] = useState([]);
+export default function Shop({ initialProducts = [], initialCategories = [] }) {
+    const [products, setProducts] = useState(initialProducts);
+    const [categories, setCategories] = useState(initialCategories);
     const [activeCategory, setActiveCategory] = useState('All Equipment');
     const [sortBy, setSortBy] = useState('latest');
     const [currentPage, setCurrentPage] = useState(1);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(initialProducts.length === 0);
 
     // Modal & Gallery Switcher State
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -725,3 +725,26 @@ export default function Shop() {
         </React.Fragment>
     );
 };
+
+export async function getStaticProps() {
+    try {
+        const [prodRes, catRes] = await Promise.all([
+            getProducts(30),
+            getProductCategories()
+        ]);
+        return {
+            props: {
+                initialProducts: prodRes.products || [],
+                initialCategories: catRes || []
+            }
+        };
+    } catch (e) {
+        console.warn("getStaticProps fallback:", e);
+        return {
+            props: {
+                initialProducts: [],
+                initialCategories: []
+            }
+        };
+    }
+}
